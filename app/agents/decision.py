@@ -8,7 +8,7 @@ from app.models.state import (
 )
 from app.models.claim import DecisionStatus
 from app.config import settings
-from app.llm import groq_json_completion
+from app.llm import groq_json_completion, safe_parse_message
 
 
 class DecisionAgent:
@@ -42,6 +42,10 @@ Total Expenses: ₹{sum(case.expenses_inr.model_dump().values()):,}"""
             ev = case.evidence_context
             case_info += (f"\nEvidence: hospital_registered={ev.hospital_registered}, "
                           f"medical_necessity_confirmed={ev.medical_necessity_confirmed}")
+        if case.expense_timing is not None:
+            case_info += (
+                f"\nPre/Post same condition: {case.expense_timing.same_condition_confirmed}"
+            )
 
         findings_text = "\n".join([
             f"- [{f.dimension.value}] supported={f.supported} wp={f.waiting_period_status} excl={f.exclusion_applies}: {f.finding}"
@@ -140,10 +144,16 @@ Rules:
         response = groq_json_completion(self.client, self.model, prompt,
                                         temperature=0.1, max_tokens=2500)
 
-        result = json.loads(response.choices[0].message.content)
+        result = safe_parse_message(response)
 
-        decision_status = DecisionStatus(result.get("decision", "NEEDS_REVIEW"))
-        confidence = min(1.0, max(0.0, float(result.get("confidence", 0.5))))
+        try:
+            decision_status = DecisionStatus(result.get("decision", "NEEDS_REVIEW"))
+        except ValueError:
+            decision_status = DecisionStatus.NEEDS_REVIEW
+        try:
+            confidence = min(1.0, max(0.0, float(result.get("confidence", 0.5))))
+        except (TypeError, ValueError):
+            confidence = 0.5
 
         key_findings = []
         for f in result.get("key_findings", []):
@@ -201,7 +211,7 @@ Rules:
             "action": f"Decision: {decision_status.value}, confidence {confidence:.2f}",
             "duration_ms": int((time.time() - start) * 1000),
             "evidence_count": len(key_findings),
-            "metadata": {"reasoning": state["decision_draft"].reasoning}
+            "metadata": {}
         })
 
         return state

@@ -7,7 +7,7 @@ from app.models.state import (
 )
 from app.models.claim import ValidationResult, ValidationStatus
 from app.config import settings
-from app.llm import groq_json_completion
+from app.llm import groq_json_completion, safe_parse_message
 
 
 class ValidationAgent:
@@ -87,17 +87,24 @@ Return ONLY valid JSON:
         response = groq_json_completion(self.client, self.model, prompt,
                                         temperature=0.0, max_tokens=1500)
 
-        result = json.loads(response.choices[0].message.content)
+        result = safe_parse_message(response)
 
         unsupported = []
         for finding in draft.key_findings:
             if not finding.citations:
                 unsupported.append(f"{finding.finding} (chunks: ) — material finding has no policy citation")
         for u in result.get("unsupported_claims", []):
+            if not isinstance(u, dict):
+                continue
             unsupported.append(f"{u.get('claim', '')} (chunks: {', '.join(u.get('chunk_ids', []))}) — {u.get('reason', '')}")
 
+        try:
+            status = ValidationStatus(result.get("status", "FAIL"))
+        except ValueError:
+            status = ValidationStatus.FAIL
+
         validation = ValidationResult(
-            status=ValidationStatus(result.get("status", "FAIL")),
+            status=status,
             unsupported_claims=unsupported
         )
 

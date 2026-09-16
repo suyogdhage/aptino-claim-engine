@@ -122,18 +122,18 @@ python -m app.evaluation.evaluate
 python -m app.evaluation.check_release
 ```
 
-### Evaluation results (deterministic mock mode, 17 cases)
+### Evaluation results (deterministic mock mode, 18 cases)
 
 | Metric | Value |
 | --- | --- |
-| Accuracy | 1.0 (12/12 public, 5/5 custom) |
-| Abstention rate | 0.176 (3 needed review, all correct) |
+| Accuracy | 1.0 (12/12 public, 6/6 custom) |
+| Abstention rate | 0.167 (3 needed review, all correct) |
 | Citation coverage | 1.0 |
-| Citation precision | 0.314 |
-| Retrieval recall@1 | 0.265 |
-| Retrieval recall@2 | 0.5 |
-| Retrieval recall@4 | 0.588 |
-| Retrieval recall@8 | 0.882 |
+| Citation precision | 0.296 |
+| Retrieval recall@1 | 0.25 |
+| Retrieval recall@2 | 0.528 |
+| Retrieval recall@4 | 0.611 |
+| Retrieval recall@8 | 0.889 |
 
 The release gate (`app/evaluation/check_release.py`) is mode-aware: the
 deterministic mock run must score 1.0 accuracy with full citation coverage and

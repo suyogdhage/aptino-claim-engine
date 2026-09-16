@@ -1,30 +1,11 @@
 import time
-import json
-from typing import Dict, List, Any
 from groq import Groq
 from app.models.state import (
     ClaimState, InvestigationPlan, InvestigationDimension,
     ClaimCase, EvidenceContext, ExpenseTiming, PriorPolicy
 )
-from app.models.claim import TreatmentType
 from app.config import settings
-from app.llm import groq_json_completion
-
-
-DIMENSION_QUERIES = {
-    InvestigationDimension.WAITING_PERIOD: "initial waiting period 30 days pre-existing disease waiting period 24 48 months",
-    InvestigationDimension.PRE_EXISTING: "pre-existing disease definition waiting period coverage exclusion",
-    InvestigationDimension.COVERAGE_SCOPE: "scope of cover inpatient hospitalization day care domiciliary treatment covered expenses",
-    InvestigationDimension.EXCLUSIONS: "exclusions cosmetic experimental unproven treatment not covered",
-    InvestigationDimension.HOSPITAL_DEFINITION: "hospital definition registered minimum criteria 10 beds 24 hour nursing",
-    InvestigationDimension.DOMICILIARY_CONDITIONS: "domiciliary treatment conditions home treatment hospital room unavailable patient cannot be moved",
-    InvestigationDimension.DAY_CARE_QUALIFICATION: "day care treatment less than 24 hours hospitalization qualification",
-    InvestigationDimension.CATEGORY_LIMITS: "sub-limit category limit specific disease cap room rent ICU limit",
-    InvestigationDimension.PRE_POST_HOSPITALIZATION: "pre-hospitalization post-hospitalization expenses 30 days 60 days same condition",
-    InvestigationDimension.PORTABILITY: "portability continuous coverage prior insurer waiting period reduction",
-    InvestigationDimension.EXPERIMENTAL_TREATMENT: "experimental unproven investigational treatment exclusion",
-    InvestigationDimension.EVIDENCE_SUFFICIENCY: "documents required claim form discharge summary itemized bill medical records",
-}
+from app.llm import groq_json_completion, safe_parse_message
 
 
 class CaseAnalysisAgent:
@@ -77,16 +58,37 @@ Order dimensions by priority - waiting periods and coverage scope first, then ex
         response = groq_json_completion(self.client, self.model, prompt,
                                         temperature=0.1, max_tokens=1500)
 
-        result = json.loads(response.choices[0].message.content)
+        result = safe_parse_message(response)
 
-        dimensions = [InvestigationDimension(d) for d in result.get("dimensions", [])]
-        priority_order = [InvestigationDimension(d) for d in result.get("priority_order", [])]
+        def parse_dimensions(raw) -> list:
+            if not isinstance(raw, list):
+                return []
+            dims = []
+            for d in raw:
+                if isinstance(d, str):
+                    try:
+                        dims.append(InvestigationDimension(d))
+                    except ValueError:
+                        continue
+            return dims
+
+        dimensions = parse_dimensions(result.get("dimensions"))
+        priority_order = parse_dimensions(result.get("priority_order"))
+
+        # Never run the pipeline with a null investigation plan; fall back to
+        # the coverage-scope dimension when the provider output is unusable.
+        if not dimensions:
+            dimensions = [InvestigationDimension.COVERAGE_SCOPE]
+        if not priority_order:
+            priority_order = dimensions
 
         plan = InvestigationPlan(
             dimensions=dimensions,
-            missing_fields=result.get("missing_fields", []),
-            checklist=result.get("checklist", []),
-            priority_order=priority_order if priority_order else dimensions
+            missing_fields=result.get("missing_fields", [])
+            if isinstance(result.get("missing_fields"), list) else [],
+            checklist=result.get("checklist", [])
+            if isinstance(result.get("checklist"), list) else [],
+            priority_order=priority_order
         )
 
         state["investigation_plan"] = plan

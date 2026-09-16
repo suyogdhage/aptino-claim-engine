@@ -8,7 +8,13 @@ from pydantic import ValidationError
 from app.models.claim import ClaimCase, DecisionResponse
 from app.graph.workflow import ClaimEngine
 from app.config import settings
-from app.evaluation.expected import EXPECTED_OUTCOMES_FILE, GOLD_EVIDENCE_FILE, ExpectedOutcome, GoldEvidence
+from app.evaluation.expected import (
+    EXPECTED_OUTCOMES_FILE,
+    GOLD_EVIDENCE_FILE,
+    ExpectedOutcome,
+    GoldEvidence,
+    load_expected_outcomes,
+)
 
 
 def llm_mode() -> str:
@@ -105,8 +111,7 @@ def evaluate_single(
 
 def run_evaluation(data_dir: str = "./data") -> dict:
     engine = ClaimEngine()
-    with open(EXPECTED_OUTCOMES_FILE, "r") as f:
-        expected_map = {k: ExpectedOutcome(**v) for k, v in json.load(f).items()}
+    expected_map = load_expected_outcomes()
 
     from app.evaluation.expected import load_gold_evidence
     gold_map = load_gold_evidence()

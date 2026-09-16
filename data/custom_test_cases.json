@@ -173,5 +173,44 @@
       "itemized_bill"
     ],
     "task": "Determine whether domiciliary treatment satisfies all policy conditions."
+  },
+  {
+    "case_id": "CUS-006",
+    "policy_id": "USGIC-CSC-2017-2018",
+    "policy_start_date": "2025-01-01",
+    "claim_date": "2026-03-15",
+    "sum_insured_inr": 500000,
+    "continuous_coverage_months": 14,
+    "prior_insurer_continuous_years": 0,
+    "patient": {"age": 35},
+    "hospital": {"name": "City Hospital", "network_provider": true},
+    "treatment": {
+      "type": "inpatient",
+      "admission_hours": 72,
+      "diagnosis": "Kidney stone",
+      "procedure": "Lithotripsy",
+      "pre_existing": false,
+      "experimental": false
+    },
+    "expenses_inr": {
+      "room": 20000,
+      "doctor_fees": 30000,
+      "medicines_diagnostics": 45000,
+      "pre_hospitalization": 0,
+      "post_hospitalization": 18000,
+      "ambulance": 800
+    },
+    "documents": [
+      "claim_form",
+      "discharge_summary",
+      "itemized_bill",
+      "doctor_prescription"
+    ],
+    "task": "Determine whether the kidney stone claim is admissible. The post-hospitalization expense relates to a dental follow-up, not the admission condition.",
+    "expense_timing": {
+      "pre_hospitalization_days_before_admission": null,
+      "post_hospitalization_days_after_discharge": 15,
+      "same_condition_confirmed": false
+    }
   }
 ]

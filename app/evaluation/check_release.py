@@ -12,7 +12,7 @@ from pathlib import Path
 
 def _check(summary: dict, *, strict: bool) -> list:
     failures = []
-    if summary.get("total_cases") != 17:
+    if summary.get("total_cases") != 18:
         failures.append("expected all 17 cases to run")
     if summary.get("skipped_cases"):
         failures.append(f"skipped cases: {summary['skipped_cases']}")

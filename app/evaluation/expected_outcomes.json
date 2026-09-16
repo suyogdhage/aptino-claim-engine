@@ -83,5 +83,10 @@
     "decision": "ADMISSIBLE_WITH_LIMITS",
     "confidence_min": 0.5,
     "note": "Domiciliary conditions met; applicable sub-limit applies to domiciliary treatment."
+  },
+  "CUS-006": {
+    "decision": "PARTIALLY_ADMISSIBLE",
+    "confidence_min": 0.5,
+    "note": "Inpatient kidney stone treatment is covered, but post-hospitalization expenses relate to an unrelated dental follow-up (not the same condition as the admission), so that part of the claim is not payable."
   }
 }

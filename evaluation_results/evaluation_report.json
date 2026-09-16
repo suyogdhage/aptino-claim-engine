@@ -1,12 +1,12 @@
 {
   "summary": {
     "llm_mode": "mock",
-    "total_cases": 17,
+    "total_cases": 18,
     "skipped_cases": [],
-    "correct_decisions": 17,
+    "correct_decisions": 18,
     "accuracy": 1.0,
     "avg_confidence": 0.7,
-    "abstention_rate": 0.176,
+    "abstention_rate": 0.167,
     "expected_abstain_cases": [
       "PUB-006",
       "PUB-011",
@@ -18,11 +18,11 @@
       "CUS-003"
     ],
     "citation_coverage": 1.0,
-    "citation_precision": 0.314,
-    "retrieval_recall_at_1": 0.265,
-    "retrieval_recall_at_2": 0.5,
-    "retrieval_recall_at_4": 0.588,
-    "retrieval_recall_at_8": 0.882,
+    "citation_precision": 0.296,
+    "retrieval_recall_at_1": 0.25,
+    "retrieval_recall_at_2": 0.528,
+    "retrieval_recall_at_4": 0.611,
+    "retrieval_recall_at_8": 0.889,
     "per_set": {
       "public": {
         "total": 12,
@@ -31,9 +31,9 @@
         "accuracy": 1.0
       },
       "custom": {
-        "total": 5,
+        "total": 6,
         "skipped": 0,
-        "correct": 5,
+        "correct": 6,
         "accuracy": 1.0
       }
     }
@@ -116,7 +116,7 @@
         {
           "agent": "CaseAnalysis",
           "action": "Identified 5 investigation dimensions, 2 missing fields",
-          "duration_ms": 9,
+          "duration_ms": 7,
           "evidence_count": 0,
           "metadata": {
             "dimensions": [
@@ -131,7 +131,7 @@
         {
           "agent": "PolicyEvidence",
           "action": "Retrieved evidence for 5 dimensions",
-          "duration_ms": 19417,
+          "duration_ms": 19642,
           "evidence_count": 40,
           "metadata": {
             "counts": {
@@ -188,7 +188,7 @@
         {
           "agent": "CoverageExclusion",
           "action": "Assessed 2 dimensions, admissible: True",
-          "duration_ms": 0,
+          "duration_ms": 1,
           "evidence_count": 40,
           "metadata": {
             "blocking_issues": []
@@ -197,11 +197,9 @@
         {
           "agent": "Decision",
           "action": "Decision: ADMISSIBLE_WITH_LIMITS, confidence 0.70",
-          "duration_ms": 1,
+          "duration_ms": 2,
           "evidence_count": 2,
-          "metadata": {
-            "reasoning": "Claim admissible but one or more category sub-limits are exceeded."
-          }
+          "metadata": {}
         },
         {
           "agent": "Validation",
@@ -271,7 +269,7 @@
           {
             "agent": "CaseAnalysis",
             "action": "Identified 5 investigation dimensions, 2 missing fields",
-            "duration_ms": 9,
+            "duration_ms": 7,
             "evidence_count": 0,
             "metadata": {
               "dimensions": [
@@ -286,7 +284,7 @@
           {
             "agent": "PolicyEvidence",
             "action": "Retrieved evidence for 5 dimensions",
-            "duration_ms": 19417,
+            "duration_ms": 19642,
             "evidence_count": 40,
             "metadata": {
               "counts": {
@@ -343,7 +341,7 @@
           {
             "agent": "CoverageExclusion",
             "action": "Assessed 2 dimensions, admissible: True",
-            "duration_ms": 0,
+            "duration_ms": 1,
             "evidence_count": 40,
             "metadata": {
               "blocking_issues": []
@@ -352,11 +350,9 @@
           {
             "agent": "Decision",
             "action": "Decision: ADMISSIBLE_WITH_LIMITS, confidence 0.70",
-            "duration_ms": 1,
+            "duration_ms": 2,
             "evidence_count": 2,
-            "metadata": {
-              "reasoning": "Claim admissible but one or more category sub-limits are exceeded."
-            }
+            "metadata": {}
           },
           {
             "agent": "Validation",
@@ -462,7 +458,7 @@
         {
           "agent": "PolicyEvidence",
           "action": "Retrieved evidence for 5 dimensions",
-          "duration_ms": 4015,
+          "duration_ms": 4187,
           "evidence_count": 40,
           "metadata": {
             "counts": {
@@ -530,9 +526,7 @@
           "action": "Decision: NOT_ADMISSIBLE, confidence 0.70",
           "duration_ms": 0,
           "evidence_count": 2,
-          "metadata": {
-            "reasoning": "Claim falls within the initial 30-day waiting period."
-          }
+          "metadata": {}
         },
         {
           "agent": "Validation",
@@ -617,7 +611,7 @@
           {
             "agent": "PolicyEvidence",
             "action": "Retrieved evidence for 5 dimensions",
-            "duration_ms": 4015,
+            "duration_ms": 4187,
             "evidence_count": 40,
             "metadata": {
               "counts": {
@@ -685,9 +679,7 @@
             "action": "Decision: NOT_ADMISSIBLE, confidence 0.70",
             "duration_ms": 0,
             "evidence_count": 2,
-            "metadata": {
-              "reasoning": "Claim falls within the initial 30-day waiting period."
-            }
+            "metadata": {}
           },
           {
             "agent": "Validation",
@@ -803,7 +795,7 @@
         {
           "agent": "PolicyEvidence",
           "action": "Retrieved evidence for 6 dimensions",
-          "duration_ms": 5555,
+          "duration_ms": 6262,
           "evidence_count": 48,
           "metadata": {
             "counts": {
@@ -882,9 +874,7 @@
           "action": "Decision: NOT_ADMISSIBLE, confidence 0.70",
           "duration_ms": 0,
           "evidence_count": 3,
-          "metadata": {
-            "reasoning": "- Pre-existing disease waiting period (48 months) not satisfied"
-          }
+          "metadata": {}
         },
         {
           "agent": "Validation",
@@ -990,7 +980,7 @@
           {
             "agent": "PolicyEvidence",
             "action": "Retrieved evidence for 6 dimensions",
-            "duration_ms": 5555,
+            "duration_ms": 6262,
             "evidence_count": 48,
             "metadata": {
               "counts": {
@@ -1069,9 +1059,7 @@
             "action": "Decision: NOT_ADMISSIBLE, confidence 0.70",
             "duration_ms": 0,
             "evidence_count": 3,
-            "metadata": {
-              "reasoning": "- Pre-existing disease waiting period (48 months) not satisfied"
-            }
+            "metadata": {}
           },
           {
             "agent": "Validation",
@@ -1187,7 +1175,7 @@
         {
           "agent": "PolicyEvidence",
           "action": "Retrieved evidence for 6 dimensions",
-          "duration_ms": 5529,
+          "duration_ms": 6402,
           "evidence_count": 48,
           "metadata": {
             "counts": {
@@ -1266,9 +1254,7 @@
           "action": "Decision: NOT_ADMISSIBLE, confidence 0.70",
           "duration_ms": 0,
           "evidence_count": 3,
-          "metadata": {
-            "reasoning": "Domiciliary treatment not admissible: policy requires both room unavailability and patient-cannot-be-moved."
-          }
+          "metadata": {}
         },
         {
           "agent": "Validation",
@@ -1374,7 +1360,7 @@
           {
             "agent": "PolicyEvidence",
             "action": "Retrieved evidence for 6 dimensions",
-            "duration_ms": 5529,
+            "duration_ms": 6402,
             "evidence_count": 48,
             "metadata": {
               "counts": {
@@ -1453,9 +1439,7 @@
             "action": "Decision: NOT_ADMISSIBLE, confidence 0.70",
             "duration_ms": 0,
             "evidence_count": 3,
-            "metadata": {
-              "reasoning": "Domiciliary treatment not admissible: policy requires both room unavailability and patient-cannot-be-moved."
-            }
+            "metadata": {}
           },
           {
             "agent": "Validation",
@@ -1571,7 +1555,7 @@
         {
           "agent": "PolicyEvidence",
           "action": "Retrieved evidence for 6 dimensions",
-          "duration_ms": 7227,
+          "duration_ms": 7565,
           "evidence_count": 48,
           "metadata": {
             "counts": {
@@ -1648,9 +1632,7 @@
           "action": "Decision: ADMISSIBLE, confidence 0.70",
           "duration_ms": 0,
           "evidence_count": 3,
-          "metadata": {
-            "reasoning": "Claim admissible with no material limit exceeded."
-          }
+          "metadata": {}
         },
         {
           "agent": "Validation",
@@ -1756,7 +1738,7 @@
           {
             "agent": "PolicyEvidence",
             "action": "Retrieved evidence for 6 dimensions",
-            "duration_ms": 7227,
+            "duration_ms": 7565,
             "evidence_count": 48,
             "metadata": {
               "counts": {
@@ -1833,9 +1815,7 @@
             "action": "Decision: ADMISSIBLE, confidence 0.70",
             "duration_ms": 0,
             "evidence_count": 3,
-            "metadata": {
-              "reasoning": "Claim admissible with no material limit exceeded."
-            }
+            "metadata": {}
           },
           {
             "agent": "Validation",
@@ -1943,7 +1923,7 @@
         {
           "agent": "PolicyEvidence",
           "action": "Retrieved evidence for 5 dimensions",
-          "duration_ms": 5249,
+          "duration_ms": 5650,
           "evidence_count": 40,
           "metadata": {
             "counts": {
@@ -2011,9 +1991,7 @@
           "action": "Decision: NEEDS_REVIEW, confidence 0.70",
           "duration_ms": 0,
           "evidence_count": 2,
-          "metadata": {
-            "reasoning": "Medical necessity not confirmed - insufficient evidence for admission decision."
-          }
+          "metadata": {}
         },
         {
           "agent": "Validation",
@@ -2100,7 +2078,7 @@
           {
             "agent": "PolicyEvidence",
             "action": "Retrieved evidence for 5 dimensions",
-            "duration_ms": 5249,
+            "duration_ms": 5650,
             "evidence_count": 40,
             "metadata": {
               "counts": {
@@ -2168,9 +2146,7 @@
             "action": "Decision: NEEDS_REVIEW, confidence 0.70",
             "duration_ms": 0,
             "evidence_count": 2,
-            "metadata": {
-              "reasoning": "Medical necessity not confirmed - insufficient evidence for admission decision."
-            }
+            "metadata": {}
           },
           {
             "agent": "Validation",
@@ -2276,7 +2252,7 @@
         {
           "agent": "PolicyEvidence",
           "action": "Retrieved evidence for 5 dimensions",
-          "duration_ms": 5273,
+          "duration_ms": 5499,
           "evidence_count": 40,
           "metadata": {
             "counts": {
@@ -2333,7 +2309,7 @@
         {
           "agent": "CoverageExclusion",
           "action": "Assessed 2 dimensions, admissible: True",
-          "duration_ms": 0,
+          "duration_ms": 1,
           "evidence_count": 40,
           "metadata": {
             "blocking_issues": []
@@ -2344,9 +2320,7 @@
           "action": "Decision: ADMISSIBLE_WITH_LIMITS, confidence 0.70",
           "duration_ms": 0,
           "evidence_count": 2,
-          "metadata": {
-            "reasoning": "Claim admissible but one or more category sub-limits are exceeded."
-          }
+          "metadata": {}
         },
         {
           "agent": "Validation",
@@ -2431,7 +2405,7 @@
           {
             "agent": "PolicyEvidence",
             "action": "Retrieved evidence for 5 dimensions",
-            "duration_ms": 5273,
+            "duration_ms": 5499,
             "evidence_count": 40,
             "metadata": {
               "counts": {
@@ -2488,7 +2462,7 @@
           {
             "agent": "CoverageExclusion",
             "action": "Assessed 2 dimensions, admissible: True",
-            "duration_ms": 0,
+            "duration_ms": 1,
             "evidence_count": 40,
             "metadata": {
               "blocking_issues": []
@@ -2499,9 +2473,7 @@
             "action": "Decision: ADMISSIBLE_WITH_LIMITS, confidence 0.70",
             "duration_ms": 0,
             "evidence_count": 2,
-            "metadata": {
-              "reasoning": "Claim admissible but one or more category sub-limits are exceeded."
-            }
+            "metadata": {}
           },
           {
             "agent": "Validation",
@@ -2607,7 +2579,7 @@
         {
           "agent": "PolicyEvidence",
           "action": "Retrieved evidence for 5 dimensions",
-          "duration_ms": 5360,
+          "duration_ms": 5552,
           "evidence_count": 40,
           "metadata": {
             "counts": {
@@ -2664,7 +2636,7 @@
         {
           "agent": "CoverageExclusion",
           "action": "Assessed 3 dimensions, admissible: False",
-          "duration_ms": 0,
+          "duration_ms": 1,
           "evidence_count": 40,
           "metadata": {
             "blocking_issues": [
@@ -2677,9 +2649,7 @@
           "action": "Decision: NOT_ADMISSIBLE, confidence 0.70",
           "duration_ms": 0,
           "evidence_count": 3,
-          "metadata": {
-            "reasoning": "- Treatment excluded by policy exclusions"
-          }
+          "metadata": {}
         },
         {
           "agent": "Validation",
@@ -2784,7 +2754,7 @@
           {
             "agent": "PolicyEvidence",
             "action": "Retrieved evidence for 5 dimensions",
-            "duration_ms": 5360,
+            "duration_ms": 5552,
             "evidence_count": 40,
             "metadata": {
               "counts": {
@@ -2841,7 +2811,7 @@
           {
             "agent": "CoverageExclusion",
             "action": "Assessed 3 dimensions, admissible: False",
-            "duration_ms": 0,
+            "duration_ms": 1,
             "evidence_count": 40,
             "metadata": {
               "blocking_issues": [
@@ -2854,9 +2824,7 @@
             "action": "Decision: NOT_ADMISSIBLE, confidence 0.70",
             "duration_ms": 0,
             "evidence_count": 3,
-            "metadata": {
-              "reasoning": "- Treatment excluded by policy exclusions"
-            }
+            "metadata": {}
           },
           {
             "agent": "Validation",
@@ -2972,7 +2940,7 @@
         {
           "agent": "PolicyEvidence",
           "action": "Retrieved evidence for 6 dimensions",
-          "duration_ms": 6577,
+          "duration_ms": 6871,
           "evidence_count": 48,
           "metadata": {
             "counts": {
@@ -3038,7 +3006,7 @@
         {
           "agent": "CoverageExclusion",
           "action": "Assessed 2 dimensions, admissible: True",
-          "duration_ms": 1,
+          "duration_ms": 0,
           "evidence_count": 48,
           "metadata": {
             "blocking_issues": []
@@ -3049,9 +3017,7 @@
           "action": "Decision: ADMISSIBLE, confidence 0.70",
           "duration_ms": 0,
           "evidence_count": 2,
-          "metadata": {
-            "reasoning": "Claim admissible with no material limit exceeded."
-          }
+          "metadata": {}
         },
         {
           "agent": "Validation",
@@ -3137,7 +3103,7 @@
           {
             "agent": "PolicyEvidence",
             "action": "Retrieved evidence for 6 dimensions",
-            "duration_ms": 6577,
+            "duration_ms": 6871,
             "evidence_count": 48,
             "metadata": {
               "counts": {
@@ -3203,7 +3169,7 @@
           {
             "agent": "CoverageExclusion",
             "action": "Assessed 2 dimensions, admissible: True",
-            "duration_ms": 1,
+            "duration_ms": 0,
             "evidence_count": 48,
             "metadata": {
               "blocking_issues": []
@@ -3214,9 +3180,7 @@
             "action": "Decision: ADMISSIBLE, confidence 0.70",
             "duration_ms": 0,
             "evidence_count": 2,
-            "metadata": {
-              "reasoning": "Claim admissible with no material limit exceeded."
-            }
+            "metadata": {}
           },
           {
             "agent": "Validation",
@@ -3343,7 +3307,7 @@
         {
           "agent": "PolicyEvidence",
           "action": "Retrieved evidence for 7 dimensions",
-          "duration_ms": 7982,
+          "duration_ms": 8163,
           "evidence_count": 56,
           "metadata": {
             "counts": {
@@ -3429,9 +3393,7 @@
           "action": "Decision: ADMISSIBLE, confidence 0.70",
           "duration_ms": 0,
           "evidence_count": 3,
-          "metadata": {
-            "reasoning": "Claim admissible with no material limit exceeded."
-          }
+          "metadata": {}
         },
         {
           "agent": "Validation",
@@ -3538,7 +3500,7 @@
           {
             "agent": "PolicyEvidence",
             "action": "Retrieved evidence for 7 dimensions",
-            "duration_ms": 7982,
+            "duration_ms": 8163,
             "evidence_count": 56,
             "metadata": {
               "counts": {
@@ -3624,9 +3586,7 @@
             "action": "Decision: ADMISSIBLE, confidence 0.70",
             "duration_ms": 0,
             "evidence_count": 3,
-            "metadata": {
-              "reasoning": "Claim admissible with no material limit exceeded."
-            }
+            "metadata": {}
           },
           {
             "agent": "Validation",
@@ -3744,7 +3704,7 @@
         {
           "agent": "PolicyEvidence",
           "action": "Retrieved evidence for 6 dimensions",
-          "duration_ms": 6689,
+          "duration_ms": 6910,
           "evidence_count": 48,
           "metadata": {
             "counts": {
@@ -3821,9 +3781,7 @@
           "action": "Decision: NEEDS_REVIEW, confidence 0.70",
           "duration_ms": 0,
           "evidence_count": 2,
-          "metadata": {
-            "reasoning": "Medical necessity not confirmed - insufficient evidence for admission decision."
-          }
+          "metadata": {}
         },
         {
           "agent": "Validation",
@@ -3911,7 +3869,7 @@
           {
             "agent": "PolicyEvidence",
             "action": "Retrieved evidence for 6 dimensions",
-            "duration_ms": 6689,
+            "duration_ms": 6910,
             "evidence_count": 48,
             "metadata": {
               "counts": {
@@ -3988,9 +3946,7 @@
             "action": "Decision: NEEDS_REVIEW, confidence 0.70",
             "duration_ms": 0,
             "evidence_count": 2,
-            "metadata": {
-              "reasoning": "Medical necessity not confirmed - insufficient evidence for admission decision."
-            }
+            "metadata": {}
           },
           {
             "agent": "Validation",
@@ -4107,7 +4063,7 @@
         {
           "agent": "PolicyEvidence",
           "action": "Retrieved evidence for 6 dimensions",
-          "duration_ms": 5931,
+          "duration_ms": 5822,
           "evidence_count": 48,
           "metadata": {
             "counts": {
@@ -4187,9 +4143,7 @@
           "action": "Decision: NOT_ADMISSIBLE, confidence 0.70",
           "duration_ms": 0,
           "evidence_count": 4,
-          "metadata": {
-            "reasoning": "- Experimental treatment exclusion applies\n- Treatment excluded by policy exclusions"
-          }
+          "metadata": {}
         },
         {
           "agent": "Validation",
@@ -4315,7 +4269,7 @@
           {
             "agent": "PolicyEvidence",
             "action": "Retrieved evidence for 6 dimensions",
-            "duration_ms": 5931,
+            "duration_ms": 5822,
             "evidence_count": 48,
             "metadata": {
               "counts": {
@@ -4395,9 +4349,7 @@
             "action": "Decision: NOT_ADMISSIBLE, confidence 0.70",
             "duration_ms": 0,
             "evidence_count": 4,
-            "metadata": {
-              "reasoning": "- Experimental treatment exclusion applies\n- Treatment excluded by policy exclusions"
-            }
+            "metadata": {}
           },
           {
             "agent": "Validation",
@@ -4503,7 +4455,7 @@
         {
           "agent": "PolicyEvidence",
           "action": "Retrieved evidence for 5 dimensions",
-          "duration_ms": 5719,
+          "duration_ms": 5718,
           "evidence_count": 40,
           "metadata": {
             "counts": {
@@ -4571,9 +4523,7 @@
           "action": "Decision: ADMISSIBLE_WITH_LIMITS, confidence 0.70",
           "duration_ms": 0,
           "evidence_count": 2,
-          "metadata": {
-            "reasoning": "Claim admissible but one or more category sub-limits are exceeded."
-          }
+          "metadata": {}
         },
         {
           "agent": "Validation",
@@ -4658,7 +4608,7 @@
           {
             "agent": "PolicyEvidence",
             "action": "Retrieved evidence for 5 dimensions",
-            "duration_ms": 5719,
+            "duration_ms": 5718,
             "evidence_count": 40,
             "metadata": {
               "counts": {
@@ -4726,9 +4676,7 @@
             "action": "Decision: ADMISSIBLE_WITH_LIMITS, confidence 0.70",
             "duration_ms": 0,
             "evidence_count": 2,
-            "metadata": {
-              "reasoning": "Claim admissible but one or more category sub-limits are exceeded."
-            }
+            "metadata": {}
           },
           {
             "agent": "Validation",
@@ -4834,7 +4782,7 @@
         {
           "agent": "PolicyEvidence",
           "action": "Retrieved evidence for 5 dimensions",
-          "duration_ms": 5710,
+          "duration_ms": 5944,
           "evidence_count": 40,
           "metadata": {
             "counts": {
@@ -4902,9 +4850,7 @@
           "action": "Decision: ADMISSIBLE_WITH_LIMITS, confidence 0.70",
           "duration_ms": 0,
           "evidence_count": 2,
-          "metadata": {
-            "reasoning": "Claim admissible but one or more category sub-limits are exceeded."
-          }
+          "metadata": {}
         },
         {
           "agent": "Validation",
@@ -4989,7 +4935,7 @@
           {
             "agent": "PolicyEvidence",
             "action": "Retrieved evidence for 5 dimensions",
-            "duration_ms": 5710,
+            "duration_ms": 5944,
             "evidence_count": 40,
             "metadata": {
               "counts": {
@@ -5057,9 +5003,7 @@
             "action": "Decision: ADMISSIBLE_WITH_LIMITS, confidence 0.70",
             "duration_ms": 0,
             "evidence_count": 2,
-            "metadata": {
-              "reasoning": "Claim admissible but one or more category sub-limits are exceeded."
-            }
+            "metadata": {}
           },
           {
             "agent": "Validation",
@@ -5167,7 +5111,7 @@
         {
           "agent": "PolicyEvidence",
           "action": "Retrieved evidence for 5 dimensions",
-          "duration_ms": 5790,
+          "duration_ms": 6160,
           "evidence_count": 40,
           "metadata": {
             "counts": {
@@ -5235,9 +5179,7 @@
           "action": "Decision: NEEDS_REVIEW, confidence 0.70",
           "duration_ms": 0,
           "evidence_count": 2,
-          "metadata": {
-            "reasoning": "Medical necessity not confirmed - insufficient evidence for admission decision."
-          }
+          "metadata": {}
         },
         {
           "agent": "Validation",
@@ -5324,7 +5266,7 @@
           {
             "agent": "PolicyEvidence",
             "action": "Retrieved evidence for 5 dimensions",
-            "duration_ms": 5790,
+            "duration_ms": 6160,
             "evidence_count": 40,
             "metadata": {
               "counts": {
@@ -5392,9 +5334,7 @@
             "action": "Decision: NEEDS_REVIEW, confidence 0.70",
             "duration_ms": 0,
             "evidence_count": 2,
-            "metadata": {
-              "reasoning": "Medical necessity not confirmed - insufficient evidence for admission decision."
-            }
+            "metadata": {}
           },
           {
             "agent": "Validation",
@@ -5510,7 +5450,7 @@
         {
           "agent": "PolicyEvidence",
           "action": "Retrieved evidence for 6 dimensions",
-          "duration_ms": 6797,
+          "duration_ms": 6724,
           "evidence_count": 48,
           "metadata": {
             "counts": {
@@ -5587,9 +5527,7 @@
           "action": "Decision: NOT_ADMISSIBLE, confidence 0.70",
           "duration_ms": 0,
           "evidence_count": 3,
-          "metadata": {
-            "reasoning": "Treatment excluded by policy (experimental/cosmetic/dental)."
-          }
+          "metadata": {}
         },
         {
           "agent": "Validation",
@@ -5695,7 +5633,7 @@
           {
             "agent": "PolicyEvidence",
             "action": "Retrieved evidence for 6 dimensions",
-            "duration_ms": 6797,
+            "duration_ms": 6724,
             "evidence_count": 48,
             "metadata": {
               "counts": {
@@ -5772,9 +5710,7 @@
             "action": "Decision: NOT_ADMISSIBLE, confidence 0.70",
             "duration_ms": 0,
             "evidence_count": 3,
-            "metadata": {
-              "reasoning": "Treatment excluded by policy (experimental/cosmetic/dental)."
-            }
+            "metadata": {}
           },
           {
             "agent": "Validation",
@@ -5890,7 +5826,7 @@
         {
           "agent": "PolicyEvidence",
           "action": "Retrieved evidence for 6 dimensions",
-          "duration_ms": 5802,
+          "duration_ms": 5865,
           "evidence_count": 48,
           "metadata": {
             "counts": {
@@ -5956,7 +5892,7 @@
         {
           "agent": "CoverageExclusion",
           "action": "Assessed 3 dimensions, admissible: True",
-          "duration_ms": 1,
+          "duration_ms": 0,
           "evidence_count": 48,
           "metadata": {
             "blocking_issues": []
@@ -5965,11 +5901,9 @@
         {
           "agent": "Decision",
           "action": "Decision: ADMISSIBLE_WITH_LIMITS, confidence 0.70",
-          "duration_ms": 1,
+          "duration_ms": 0,
           "evidence_count": 3,
-          "metadata": {
-            "reasoning": "Domiciliary treatment admissible subject to 20% SI sub-limit."
-          }
+          "metadata": {}
         },
         {
           "agent": "Validation",
@@ -6075,7 +6009,7 @@
           {
             "agent": "PolicyEvidence",
             "action": "Retrieved evidence for 6 dimensions",
-            "duration_ms": 5802,
+            "duration_ms": 5865,
             "evidence_count": 48,
             "metadata": {
               "counts": {
@@ -6141,7 +6075,7 @@
           {
             "agent": "CoverageExclusion",
             "action": "Assessed 3 dimensions, admissible: True",
-            "duration_ms": 1,
+            "duration_ms": 0,
             "evidence_count": 48,
             "metadata": {
               "blocking_issues": []
@@ -6150,11 +6084,389 @@
           {
             "agent": "Decision",
             "action": "Decision: ADMISSIBLE_WITH_LIMITS, confidence 0.70",
-            "duration_ms": 1,
+            "duration_ms": 0,
             "evidence_count": 3,
+            "metadata": {}
+          },
+          {
+            "agent": "Validation",
+            "action": "Validation: PASS, 0 unsupported claims",
+            "duration_ms": 0,
+            "evidence_count": 0,
             "metadata": {
-              "reasoning": "Domiciliary treatment admissible subject to 20% SI sub-limit."
+              "unsupported_claims": []
             }
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "CUS-006",
+      "predicted_decision": "PARTIALLY_ADMISSIBLE",
+      "expected_decision": "PARTIALLY_ADMISSIBLE",
+      "correct": true,
+      "confidence": 0.7,
+      "confidence_ok": true,
+      "abstained": false,
+      "evidence_per_dimension": {
+        "waiting_period": 8,
+        "coverage_scope": 8,
+        "exclusions": 8,
+        "evidence_sufficiency": 8,
+        "pre_post_hospitalization": 8,
+        "category_limits": 8
+      },
+      "total_evidence_retrieved": 48,
+      "retrieved_pages": [
+        6,
+        8,
+        9,
+        7,
+        10,
+        10,
+        1,
+        3,
+        6,
+        8,
+        7,
+        9,
+        10,
+        4,
+        2,
+        3,
+        6,
+        8,
+        6,
+        7,
+        9,
+        10,
+        6,
+        4,
+        6,
+        8,
+        9,
+        7,
+        10,
+        10,
+        6,
+        4,
+        6,
+        7,
+        8,
+        9,
+        10,
+        10,
+        3,
+        8,
+        6,
+        8,
+        7,
+        9,
+        4,
+        6,
+        1,
+        3
+      ],
+      "gold_pages": [
+        8
+      ],
+      "retrieval_recall_at_k": {
+        "1": 0.0,
+        "2": 1.0,
+        "4": 1.0,
+        "8": 1.0
+      },
+      "citation_count": 3,
+      "citation_hit_rate": 0.0,
+      "citation_precision": 0.0,
+      "validation_status": "PASS",
+      "unsupported_claims": [],
+      "missing_evidence": [],
+      "trace": [
+        {
+          "agent": "CaseAnalysis",
+          "action": "Identified 6 investigation dimensions, 2 missing fields",
+          "duration_ms": 0,
+          "evidence_count": 0,
+          "metadata": {
+            "dimensions": [
+              "waiting_period",
+              "coverage_scope",
+              "exclusions",
+              "evidence_sufficiency",
+              "pre_post_hospitalization",
+              "category_limits"
+            ]
+          }
+        },
+        {
+          "agent": "PolicyEvidence",
+          "action": "Retrieved evidence for 6 dimensions",
+          "duration_ms": 8115,
+          "evidence_count": 48,
+          "metadata": {
+            "counts": {
+              "waiting_period": 8,
+              "coverage_scope": 8,
+              "exclusions": 8,
+              "evidence_sufficiency": 8,
+              "pre_post_hospitalization": 8,
+              "category_limits": 8
+            },
+            "retrieved_pages": [
+              6,
+              8,
+              9,
+              7,
+              10,
+              10,
+              1,
+              3,
+              6,
+              8,
+              7,
+              9,
+              10,
+              4,
+              2,
+              3,
+              6,
+              8,
+              6,
+              7,
+              9,
+              10,
+              6,
+              4,
+              6,
+              8,
+              9,
+              7,
+              10,
+              10,
+              6,
+              4,
+              6,
+              7,
+              8,
+              9,
+              10,
+              10,
+              3,
+              8,
+              6,
+              8,
+              7,
+              9,
+              4,
+              6,
+              1,
+              3
+            ]
+          }
+        },
+        {
+          "agent": "CoverageExclusion",
+          "action": "Assessed 3 dimensions, admissible: True",
+          "duration_ms": 0,
+          "evidence_count": 48,
+          "metadata": {
+            "blocking_issues": [
+              "Pre/post-hospitalization expenses not payable: not incurred for the same condition as the admission"
+            ]
+          }
+        },
+        {
+          "agent": "Decision",
+          "action": "Decision: PARTIALLY_ADMISSIBLE, confidence 0.70",
+          "duration_ms": 0,
+          "evidence_count": 3,
+          "metadata": {}
+        },
+        {
+          "agent": "Validation",
+          "action": "Validation: PASS, 0 unsupported claims",
+          "duration_ms": 0,
+          "evidence_count": 0,
+          "metadata": {
+            "unsupported_claims": []
+          }
+        }
+      ],
+      "full_result": {
+        "case_id": "CUS-006",
+        "decision": "PARTIALLY_ADMISSIBLE",
+        "confidence": 0.7,
+        "key_findings": [
+          {
+            "finding": "14 months continuous coverage since policy start.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "14 months continuous coverage since policy start.",
+                "source": "policy.pdf",
+                "page": 6,
+                "section": "DEFINITIONS",
+                "chunk_id": "9968227c5c3b"
+              }
+            ]
+          },
+          {
+            "finding": "Pre/post-hospitalization expenses are not payable: they were not incurred for the same condition as the admission.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "Pre/post-hospitalization expenses are not payable: they were not incurred for the same condition as the admission.",
+                "source": "policy.pdf",
+                "page": 6,
+                "section": "DEFINITIONS",
+                "chunk_id": "9968227c5c3b"
+              }
+            ]
+          },
+          {
+            "finding": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+                "source": "policy.pdf",
+                "page": 6,
+                "section": "DEFINITIONS",
+                "chunk_id": "9968227c5c3b"
+              }
+            ]
+          }
+        ],
+        "applicable_limits": [],
+        "missing_evidence": [],
+        "citations": [
+          {
+            "claim": "14 months continuous coverage since policy start.",
+            "source": "policy.pdf",
+            "page": 6,
+            "section": "DEFINITIONS",
+            "chunk_id": "9968227c5c3b"
+          },
+          {
+            "claim": "Pre/post-hospitalization expenses are not payable: they were not incurred for the same condition as the admission.",
+            "source": "policy.pdf",
+            "page": 6,
+            "section": "DEFINITIONS",
+            "chunk_id": "9968227c5c3b"
+          },
+          {
+            "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "source": "policy.pdf",
+            "page": 6,
+            "section": "DEFINITIONS",
+            "chunk_id": "9968227c5c3b"
+          }
+        ],
+        "validation": {
+          "status": "PASS",
+          "unsupported_claims": []
+        },
+        "trace": [
+          {
+            "agent": "CaseAnalysis",
+            "action": "Identified 6 investigation dimensions, 2 missing fields",
+            "duration_ms": 0,
+            "evidence_count": 0,
+            "metadata": {
+              "dimensions": [
+                "waiting_period",
+                "coverage_scope",
+                "exclusions",
+                "evidence_sufficiency",
+                "pre_post_hospitalization",
+                "category_limits"
+              ]
+            }
+          },
+          {
+            "agent": "PolicyEvidence",
+            "action": "Retrieved evidence for 6 dimensions",
+            "duration_ms": 8115,
+            "evidence_count": 48,
+            "metadata": {
+              "counts": {
+                "waiting_period": 8,
+                "coverage_scope": 8,
+                "exclusions": 8,
+                "evidence_sufficiency": 8,
+                "pre_post_hospitalization": 8,
+                "category_limits": 8
+              },
+              "retrieved_pages": [
+                6,
+                8,
+                9,
+                7,
+                10,
+                10,
+                1,
+                3,
+                6,
+                8,
+                7,
+                9,
+                10,
+                4,
+                2,
+                3,
+                6,
+                8,
+                6,
+                7,
+                9,
+                10,
+                6,
+                4,
+                6,
+                8,
+                9,
+                7,
+                10,
+                10,
+                6,
+                4,
+                6,
+                7,
+                8,
+                9,
+                10,
+                10,
+                3,
+                8,
+                6,
+                8,
+                7,
+                9,
+                4,
+                6,
+                1,
+                3
+              ]
+            }
+          },
+          {
+            "agent": "CoverageExclusion",
+            "action": "Assessed 3 dimensions, admissible: True",
+            "duration_ms": 0,
+            "evidence_count": 48,
+            "metadata": {
+              "blocking_issues": [
+                "Pre/post-hospitalization expenses not payable: not incurred for the same condition as the admission"
+              ]
+            }
+          },
+          {
+            "agent": "Decision",
+            "action": "Decision: PARTIALLY_ADMISSIBLE, confidence 0.70",
+            "duration_ms": 0,
+            "evidence_count": 3,
+            "metadata": {}
           },
           {
             "agent": "Validation",

@@ -8,7 +8,7 @@ from app.models.state import (
 )
 from app.models.claim import DecisionStatus, TreatmentType
 from app.config import settings
-from app.llm import groq_json_completion
+from app.llm import groq_json_completion, safe_parse_message
 
 
 class CoverageExclusionAgent:
@@ -52,11 +52,13 @@ Experimental: {case.treatment.experimental}
 Admission hours: {case.treatment.admission_hours}
 Domiciliary room unavailable: {case.treatment.hospital_room_unavailable}
 Domiciliary patient cannot be moved: {case.treatment.patient_cannot_be_moved}
-Expenses: Room ₹{case.expenses_inr.room:,}, Doctor ₹{case.expenses_inr.doctor_fees:,}, 
-          Medicines ₹{case.expenses_inr.medicines_diagnostics:,}, Pre-hosp ₹{case.expenses_inr.pre_hospitalization:,}, 
-          Post-hosp ₹{case.expenses_inr.post_hospitalization:,}, Ambulance ₹{case.expenses_inr.ambulance:,}
+Expenses: Room ₹{case.expenses_inr.room:,}, Doctor ₹{case.expenses_inr.doctor_fees:,}, Medicines ₹{case.expenses_inr.medicines_diagnostics:,}, Pre-hosp ₹{case.expenses_inr.pre_hospitalization:,}, Post-hosp ₹{case.expenses_inr.post_hospitalization:,}, Ambulance ₹{case.expenses_inr.ambulance:,}
 Documents: {', '.join(case.documents)}
 Task: {case.task}"""
+        if case.expense_timing is not None:
+            case_info += (
+                f"\nPre/Post same condition: {case.expense_timing.same_condition_confirmed}"
+            )
 
         evidence_sections = {}
         evidence_pieces = [len(retrieved_evidence.get(dim, [])) for dim in plan.dimensions]
@@ -118,7 +120,7 @@ Be precise. Only cite evidence that actually supports your statement. If evidenc
         response = groq_json_completion(self.client, self.model, prompt,
                                         temperature=0.1, max_tokens=3000)
 
-        result = json.loads(response.choices[0].message.content)
+        result = safe_parse_message(response)
 
         findings = []
         for f in result.get("findings", []):

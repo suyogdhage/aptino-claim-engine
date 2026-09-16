@@ -38,6 +38,25 @@ def groq_json_completion(client, model: str, prompt: str,
             raise
 
 
+def safe_parse_message(response) -> dict:
+    """Parse a model response into a dict, tolerating malformed content.
+
+    Single source of truth for non-fatal provider output: invalid JSON,
+    null, lists, or JSON arrays must never crash a downstream agent node.
+    """
+    try:
+        content = response.choices[0].message.content
+    except Exception:
+        return {}
+    if not isinstance(content, str):
+        return {}
+    try:
+        obj = json.loads(content)
+    except Exception:
+        return {}
+    return obj if isinstance(obj, dict) else {}
+
+
 def _compute_months_since(start: str, end: str) -> int:
     try:
         d0 = date.fromisoformat(start)
@@ -166,6 +185,10 @@ class MockChat:
                 if m2:
                     ev["medical_necessity_confirmed"] = None if m2.group(1).lower() in ("none", "null", "unknown") else m2.group(1).lower() == "true"
                 case["evidence_context"] = ev
+            if line.startswith("Pre/Post same condition:"):
+                v = line.split(":", 1)[1].strip().lower()
+                if v in ("true", "false"):
+                    case.setdefault("expense_timing", {})["same_condition_confirmed"] = v == "true"
             if line.startswith("Domiciliary room unavailable:"):
                 case.setdefault("treatment", {})["hospital_room_unavailable"] = "true" in line.split(":")[1].lower()
             if line.startswith("Domiciliary patient cannot be moved:"):
@@ -184,7 +207,7 @@ class MockChat:
                         key, _, val = part.rpartition("\u20b9")
                     else:
                         continue
-                    key = key.strip().replace(" ", "_").lower()
+                    key = key.strip().replace(" ", "_").replace("-", "_").lower()
                     exp[key] = int(re.sub(r"[^0-9]", "", val) or 0)
                 # Prompts use human-readable labels, but ClaimCase uses these
                 # canonical API fields. Keep mock-mode decisions aligned with
@@ -193,6 +216,10 @@ class MockChat:
                     exp["doctor_fees"] = exp.pop("doctor")
                 if "medicines" in exp:
                     exp["medicines_diagnostics"] = exp.pop("medicines")
+                if "pre_hosp" in exp:
+                    exp["pre_hospitalization"] = exp.pop("pre_hosp")
+                if "post_hosp" in exp:
+                    exp["post_hospitalization"] = exp.pop("post_hosp")
                 case["expenses_inr"] = exp
             if line.startswith("Pre-existing:"):
                 case.setdefault("treatment", {})["pre_existing"] = "true" in line.split(":")[1].lower()
@@ -308,6 +335,25 @@ class MockChat:
             })
             blocking.append("Treatment excluded by policy exclusions")
             overall = False
+
+        # Pre/post-hospitalization expenses are reimbursable only when incurred
+        # for the same condition as the admission. A different-condition expense
+        # makes part of the claim not payable — a partial admission decision.
+        exp_timing = case.get("expense_timing") or {}
+        exp = case.get("expenses_inr", {})
+        if (exp_timing.get("same_condition_confirmed") is False
+                and (exp.get("pre_hospitalization", 0) or exp.get("post_hospitalization", 0))):
+            findings.append({
+                "dimension": "pre_post_hospitalization",
+                "finding": ("Pre/post-hospitalization expenses are not payable: they were "
+                            "not incurred for the same condition as the admission."),
+                "supported": True,
+                "citations": [],
+                "applicable_limits": [],
+                "waiting_period_status": None,
+                "exclusion_applies": False
+            })
+            blocking.append("Pre/post-hospitalization expenses not payable: not incurred for the same condition as the admission")
 
         findings.append({
             "dimension": "category_limits",
@@ -450,6 +496,13 @@ class MockChat:
                 reasoning = "Claim admissible but one or more category sub-limits are exceeded."
             else:
                 reasoning = "Claim admissible with no material limit exceeded."
+
+        # Partial admission: admission payable, but part of the claim is not
+        # supported (e.g. pre/post-hospitalization expenses for another ailment).
+        if "not incurred for the same condition" in blocking_text:
+            decision = "PARTIALLY_ADMISSIBLE"
+            reasoning = ("Admission covered, but pre/post-hospitalization expenses are not "
+                         "payable because they were not incurred for the same condition.")
 
         return json.dumps({
             "decision": decision,

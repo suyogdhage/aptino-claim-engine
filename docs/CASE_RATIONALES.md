@@ -23,3 +23,4 @@ retrieved chunk that supports its own finding.
 | CUS-003 | NEEDS_REVIEW | Page 3, Hospital definition: registration/medical necessity are explicitly unknown and the itemized bill is missing. |
 | CUS-004 | NOT_ADMISSIBLE | Page 10, exclusions: dental treatment or surgery is excluded unless a policy exception is evidenced. |
 | CUS-005 | ADMISSIBLE_WITH_LIMITS | Page 7, Domiciliary Hospitalisation: both qualifying facts are supplied; apply the stated domiciliary sub-limit. |
+| CUS-006 | PARTIALLY_ADMISSIBLE | Page 8, What We Cover: pre/post-hospitalisation expenses are reimbursable only for the same condition; the off-condition post-hospitalisation portion is not payable while the admission itself is covered. |
