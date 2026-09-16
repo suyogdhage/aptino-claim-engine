@@ -63,7 +63,7 @@ class MockResponse:
 
 
 class MockCompletions:
-    def __init__(self, chat: MockChat):
+    def __init__(self, chat: "MockChat"):
         self._chat = chat
 
     def create(self, **kwargs):
