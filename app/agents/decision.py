@@ -49,7 +49,7 @@ Total Expenses: ₹{sum(case.expenses_inr.model_dump().values()):,}"""
 
         findings_text = "\n".join([
             f"- [{f.dimension.value}] supported={f.supported} wp={f.waiting_period_status} excl={f.exclusion_applies}: {f.finding}"
-            + (f" CITED_CHUNKS={f.citations}" if f.citations else "")
+            + (f" CITED_CHUNKS=[{', '.join(c.chunk_id for c in f.citations)}]" if f.citations else "")
             for f in coverage.findings
         ])
 
