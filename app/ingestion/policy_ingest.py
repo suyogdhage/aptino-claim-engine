@@ -79,8 +79,8 @@ class PolicyIngestor:
     @property
     def embedder(self):
         if self._embedder is None:
-            from sentence_transformers import SentenceTransformer
-            self._embedder = SentenceTransformer(self.embedding_model_name)
+            from fastembed import TextEmbedding
+            self._embedder = TextEmbedding(model_name=self.embedding_model_name)
         return self._embedder
 
     def extract_pages(self) -> List[Dict[str, Any]]:
@@ -231,7 +231,7 @@ class PolicyIngestor:
         return all_chunks
 
     def get_embeddings(self, texts: List[str]) -> List[List[float]]:
-        return self.embedder.encode(texts, show_progress_bar=True).tolist()
+        return [emb.tolist() for emb in self.embedder.embed(texts)]
 
 
 def ingest_policy(

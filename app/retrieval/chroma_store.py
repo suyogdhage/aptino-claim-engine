@@ -1,7 +1,7 @@
 import chromadb
 from chromadb.config import Settings
 from typing import List, Dict, Any, Optional
-from sentence_transformers import SentenceTransformer
+from fastembed import TextEmbedding
 import os
 
 
@@ -39,9 +39,9 @@ class ChromaStore:
         return self._collection
 
     @property
-    def embedder(self) -> SentenceTransformer:
+    def embedder(self) -> TextEmbedding:
         if self._embedder is None:
-            self._embedder = SentenceTransformer(self.embedding_model_name)
+            self._embedder = TextEmbedding(model_name=self.embedding_model_name)
         return self._embedder
 
     def add_chunks(self, chunks: List[Dict[str, Any]]) -> None:
@@ -61,7 +61,7 @@ class ChromaStore:
             for c in chunks
         ]
 
-        embeddings = self.embedder.encode(texts, show_progress_bar=True).tolist()
+        embeddings = [emb.tolist() for emb in self.embedder.embed(texts)]
 
         self.collection.add(
             ids=ids,
@@ -76,7 +76,7 @@ class ChromaStore:
         n_results: int = 20,
         where: Optional[Dict[str, Any]] = None
     ) -> List[Dict[str, Any]]:
-        query_embedding = self.embedder.encode([query_text]).tolist()[0]
+        query_embedding = list(self.embedder.embed([query_text]))[0].tolist()
 
         results = self.collection.query(
             query_embeddings=[query_embedding],

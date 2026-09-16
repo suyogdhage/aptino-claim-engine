@@ -4,7 +4,7 @@ import os
 import shutil
 import tempfile
 from typing import List, Dict, Any, Optional
-from sentence_transformers import CrossEncoder
+from app.retrieval.onnx_rerank import OnnxCrossEncoder
 from app.retrieval.chroma_store import ChromaStore
 from app.retrieval.bm25_index import BM25Index
 from app.models.state import Evidence, InvestigationDimension
@@ -68,9 +68,9 @@ class HybridRetriever:
         self._reranker = None
 
     @property
-    def reranker(self) -> CrossEncoder:
+    def reranker(self) -> OnnxCrossEncoder:
         if self._reranker is None:
-            self._reranker = CrossEncoder(self.reranker_model, max_length=512)
+            self._reranker = OnnxCrossEncoder(model_name=self.reranker_model)
         return self._reranker
 
     def rrf_fusion(
@@ -106,10 +106,10 @@ class HybridRetriever:
         if not chunks:
             return []
 
-        pairs = [(query, chunk["text"]) for chunk in chunks]
-        scores = self.reranker.predict(pairs, show_progress_bar=False)
+        documents = [chunk["text"] for chunk in chunks]
+        reranked_entries = self.reranker.predict([(query, doc) for doc in documents])
 
-        for chunk, score in zip(chunks, scores):
+        for chunk, score in zip(chunks, reranked_entries):
             chunk["rerank_score"] = float(score)
 
         reranked = sorted(chunks, key=lambda x: x["rerank_score"], reverse=True)
