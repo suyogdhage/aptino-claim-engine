@@ -1,0 +1,3544 @@
+{
+  "summary": {
+    "total_cases": 17,
+    "skipped_cases": [],
+    "correct_decisions": 17,
+    "accuracy": 1.0,
+    "avg_confidence": 0.7,
+    "abstention_rate": 0.176,
+    "expected_abstain_cases": [
+      "PUB-006",
+      "PUB-011",
+      "CUS-003"
+    ],
+    "abstained_correctly": [
+      "PUB-006",
+      "PUB-011",
+      "CUS-003"
+    ],
+    "citation_coverage": 1.0,
+    "per_set": {
+      "public": {
+        "total": 12,
+        "skipped": 0,
+        "correct": 12,
+        "accuracy": 1.0
+      },
+      "custom": {
+        "total": 5,
+        "skipped": 0,
+        "correct": 5,
+        "accuracy": 1.0
+      }
+    }
+  },
+  "results": [
+    {
+      "case_id": "PUB-001",
+      "predicted_decision": "ADMISSIBLE_WITH_LIMITS",
+      "expected_decision": "ADMISSIBLE_WITH_LIMITS",
+      "correct": true,
+      "confidence": 0.7,
+      "confidence_ok": true,
+      "abstained": false,
+      "evidence_per_dimension": {
+        "waiting_period": 8,
+        "coverage_scope": 8,
+        "exclusions": 8,
+        "evidence_sufficiency": 8,
+        "category_limits": 8
+      },
+      "total_evidence_retrieved": 40,
+      "citation_count": 2,
+      "citation_hit_rate": 1.0,
+      "validation_status": "PASS",
+      "unsupported_claims": [],
+      "missing_evidence": [],
+      "trace": [
+        {
+          "agent": "CaseAnalysis",
+          "action": "Identified 5 investigation dimensions, 2 missing fields",
+          "duration_ms": 7,
+          "evidence_count": 0,
+          "metadata": {
+            "dimensions": [
+              "waiting_period",
+              "coverage_scope",
+              "exclusions",
+              "evidence_sufficiency",
+              "category_limits"
+            ]
+          }
+        },
+        {
+          "agent": "PolicyEvidence",
+          "action": "Retrieved evidence for 5 dimensions",
+          "duration_ms": 22177,
+          "evidence_count": 40,
+          "metadata": {
+            "waiting_period": 8,
+            "coverage_scope": 8,
+            "exclusions": 8,
+            "evidence_sufficiency": 8,
+            "category_limits": 8
+          }
+        },
+        {
+          "agent": "CoverageExclusion",
+          "action": "Assessed 2 dimensions, admissible: True",
+          "duration_ms": 1,
+          "evidence_count": 40,
+          "metadata": {
+            "blocking_issues": []
+          }
+        },
+        {
+          "agent": "Decision",
+          "action": "Decision: ADMISSIBLE_WITH_LIMITS, confidence 0.70",
+          "duration_ms": 3,
+          "evidence_count": 2,
+          "metadata": {
+            "reasoning": "Claim admissible but one or more category sub-limits are exceeded."
+          }
+        },
+        {
+          "agent": "Validation",
+          "action": "Validation: PASS, 0 unsupported claims",
+          "duration_ms": 2,
+          "evidence_count": 0,
+          "metadata": {
+            "unsupported_claims": []
+          }
+        }
+      ],
+      "full_result": {
+        "case_id": "PUB-001",
+        "decision": "ADMISSIBLE_WITH_LIMITS",
+        "confidence": 0.7,
+        "key_findings": [
+          {
+            "finding": "14 months continuous coverage since policy start.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "14 months continuous coverage since policy start.",
+                "source": "policy.pdf",
+                "page": 8,
+                "section": "WHAT WE EXCLUDE",
+                "chunk_id": "10e329d5bff4"
+              }
+            ]
+          },
+          {
+            "finding": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+                "source": "policy.pdf",
+                "page": 8,
+                "section": "WHAT WE EXCLUDE",
+                "chunk_id": "10e329d5bff4"
+              }
+            ]
+          }
+        ],
+        "applicable_limits": [],
+        "missing_evidence": [],
+        "citations": [
+          {
+            "claim": "14 months continuous coverage since policy start.",
+            "source": "policy.pdf",
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "10e329d5bff4"
+          },
+          {
+            "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "source": "policy.pdf",
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "10e329d5bff4"
+          }
+        ],
+        "validation": {
+          "status": "PASS",
+          "unsupported_claims": []
+        },
+        "trace": [
+          {
+            "agent": "CaseAnalysis",
+            "action": "Identified 5 investigation dimensions, 2 missing fields",
+            "duration_ms": 7,
+            "evidence_count": 0,
+            "metadata": {
+              "dimensions": [
+                "waiting_period",
+                "coverage_scope",
+                "exclusions",
+                "evidence_sufficiency",
+                "category_limits"
+              ]
+            }
+          },
+          {
+            "agent": "PolicyEvidence",
+            "action": "Retrieved evidence for 5 dimensions",
+            "duration_ms": 22177,
+            "evidence_count": 40,
+            "metadata": {
+              "waiting_period": 8,
+              "coverage_scope": 8,
+              "exclusions": 8,
+              "evidence_sufficiency": 8,
+              "category_limits": 8
+            }
+          },
+          {
+            "agent": "CoverageExclusion",
+            "action": "Assessed 2 dimensions, admissible: True",
+            "duration_ms": 1,
+            "evidence_count": 40,
+            "metadata": {
+              "blocking_issues": []
+            }
+          },
+          {
+            "agent": "Decision",
+            "action": "Decision: ADMISSIBLE_WITH_LIMITS, confidence 0.70",
+            "duration_ms": 3,
+            "evidence_count": 2,
+            "metadata": {
+              "reasoning": "Claim admissible but one or more category sub-limits are exceeded."
+            }
+          },
+          {
+            "agent": "Validation",
+            "action": "Validation: PASS, 0 unsupported claims",
+            "duration_ms": 2,
+            "evidence_count": 0,
+            "metadata": {
+              "unsupported_claims": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "PUB-002",
+      "predicted_decision": "NOT_ADMISSIBLE",
+      "expected_decision": "NOT_ADMISSIBLE",
+      "correct": true,
+      "confidence": 0.7,
+      "confidence_ok": true,
+      "abstained": false,
+      "evidence_per_dimension": {
+        "waiting_period": 8,
+        "coverage_scope": 8,
+        "exclusions": 8,
+        "evidence_sufficiency": 8,
+        "category_limits": 8
+      },
+      "total_evidence_retrieved": 40,
+      "citation_count": 2,
+      "citation_hit_rate": 1.0,
+      "validation_status": "PASS",
+      "unsupported_claims": [],
+      "missing_evidence": [],
+      "trace": [
+        {
+          "agent": "CaseAnalysis",
+          "action": "Identified 5 investigation dimensions, 2 missing fields",
+          "duration_ms": 1,
+          "evidence_count": 0,
+          "metadata": {
+            "dimensions": [
+              "waiting_period",
+              "coverage_scope",
+              "exclusions",
+              "evidence_sufficiency",
+              "category_limits"
+            ]
+          }
+        },
+        {
+          "agent": "PolicyEvidence",
+          "action": "Retrieved evidence for 5 dimensions",
+          "duration_ms": 5790,
+          "evidence_count": 40,
+          "metadata": {
+            "waiting_period": 8,
+            "coverage_scope": 8,
+            "exclusions": 8,
+            "evidence_sufficiency": 8,
+            "category_limits": 8
+          }
+        },
+        {
+          "agent": "CoverageExclusion",
+          "action": "Assessed 2 dimensions, admissible: True",
+          "duration_ms": 0,
+          "evidence_count": 40,
+          "metadata": {
+            "blocking_issues": []
+          }
+        },
+        {
+          "agent": "Decision",
+          "action": "Decision: NOT_ADMISSIBLE, confidence 0.70",
+          "duration_ms": 0,
+          "evidence_count": 2,
+          "metadata": {
+            "reasoning": "Claim falls within the initial 30-day waiting period."
+          }
+        },
+        {
+          "agent": "Validation",
+          "action": "Validation: PASS, 0 unsupported claims",
+          "duration_ms": 0,
+          "evidence_count": 0,
+          "metadata": {
+            "unsupported_claims": []
+          }
+        }
+      ],
+      "full_result": {
+        "case_id": "PUB-002",
+        "decision": "NOT_ADMISSIBLE",
+        "confidence": 0.7,
+        "key_findings": [
+          {
+            "finding": "0 months continuous coverage since policy start.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "0 months continuous coverage since policy start.",
+                "source": "policy.pdf",
+                "page": 8,
+                "section": "WHAT WE EXCLUDE",
+                "chunk_id": "10e329d5bff4"
+              }
+            ]
+          },
+          {
+            "finding": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+                "source": "policy.pdf",
+                "page": 8,
+                "section": "WHAT WE EXCLUDE",
+                "chunk_id": "10e329d5bff4"
+              }
+            ]
+          }
+        ],
+        "applicable_limits": [],
+        "missing_evidence": [],
+        "citations": [
+          {
+            "claim": "0 months continuous coverage since policy start.",
+            "source": "policy.pdf",
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "10e329d5bff4"
+          },
+          {
+            "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "source": "policy.pdf",
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "10e329d5bff4"
+          }
+        ],
+        "validation": {
+          "status": "PASS",
+          "unsupported_claims": []
+        },
+        "trace": [
+          {
+            "agent": "CaseAnalysis",
+            "action": "Identified 5 investigation dimensions, 2 missing fields",
+            "duration_ms": 1,
+            "evidence_count": 0,
+            "metadata": {
+              "dimensions": [
+                "waiting_period",
+                "coverage_scope",
+                "exclusions",
+                "evidence_sufficiency",
+                "category_limits"
+              ]
+            }
+          },
+          {
+            "agent": "PolicyEvidence",
+            "action": "Retrieved evidence for 5 dimensions",
+            "duration_ms": 5790,
+            "evidence_count": 40,
+            "metadata": {
+              "waiting_period": 8,
+              "coverage_scope": 8,
+              "exclusions": 8,
+              "evidence_sufficiency": 8,
+              "category_limits": 8
+            }
+          },
+          {
+            "agent": "CoverageExclusion",
+            "action": "Assessed 2 dimensions, admissible: True",
+            "duration_ms": 0,
+            "evidence_count": 40,
+            "metadata": {
+              "blocking_issues": []
+            }
+          },
+          {
+            "agent": "Decision",
+            "action": "Decision: NOT_ADMISSIBLE, confidence 0.70",
+            "duration_ms": 0,
+            "evidence_count": 2,
+            "metadata": {
+              "reasoning": "Claim falls within the initial 30-day waiting period."
+            }
+          },
+          {
+            "agent": "Validation",
+            "action": "Validation: PASS, 0 unsupported claims",
+            "duration_ms": 0,
+            "evidence_count": 0,
+            "metadata": {
+              "unsupported_claims": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "PUB-003",
+      "predicted_decision": "NOT_ADMISSIBLE",
+      "expected_decision": "NOT_ADMISSIBLE",
+      "correct": true,
+      "confidence": 0.7,
+      "confidence_ok": true,
+      "abstained": false,
+      "evidence_per_dimension": {
+        "pre_existing": 8,
+        "waiting_period": 8,
+        "coverage_scope": 8,
+        "exclusions": 8,
+        "evidence_sufficiency": 8,
+        "category_limits": 8
+      },
+      "total_evidence_retrieved": 48,
+      "citation_count": 3,
+      "citation_hit_rate": 1.0,
+      "validation_status": "PASS",
+      "unsupported_claims": [],
+      "missing_evidence": [],
+      "trace": [
+        {
+          "agent": "CaseAnalysis",
+          "action": "Identified 6 investigation dimensions, 2 missing fields",
+          "duration_ms": 0,
+          "evidence_count": 0,
+          "metadata": {
+            "dimensions": [
+              "pre_existing",
+              "waiting_period",
+              "coverage_scope",
+              "exclusions",
+              "evidence_sufficiency",
+              "category_limits"
+            ]
+          }
+        },
+        {
+          "agent": "PolicyEvidence",
+          "action": "Retrieved evidence for 6 dimensions",
+          "duration_ms": 7884,
+          "evidence_count": 48,
+          "metadata": {
+            "pre_existing": 8,
+            "waiting_period": 8,
+            "coverage_scope": 8,
+            "exclusions": 8,
+            "evidence_sufficiency": 8,
+            "category_limits": 8
+          }
+        },
+        {
+          "agent": "CoverageExclusion",
+          "action": "Assessed 3 dimensions, admissible: False",
+          "duration_ms": 0,
+          "evidence_count": 48,
+          "metadata": {
+            "blocking_issues": [
+              "Pre-existing disease waiting period (48 months) not satisfied"
+            ]
+          }
+        },
+        {
+          "agent": "Decision",
+          "action": "Decision: NOT_ADMISSIBLE, confidence 0.70",
+          "duration_ms": 0,
+          "evidence_count": 3,
+          "metadata": {
+            "reasoning": "- Pre-existing disease waiting period (48 months) not satisfied"
+          }
+        },
+        {
+          "agent": "Validation",
+          "action": "Validation: PASS, 0 unsupported claims",
+          "duration_ms": 0,
+          "evidence_count": 0,
+          "metadata": {
+            "unsupported_claims": []
+          }
+        }
+      ],
+      "full_result": {
+        "case_id": "PUB-003",
+        "decision": "NOT_ADMISSIBLE",
+        "confidence": 0.7,
+        "key_findings": [
+          {
+            "finding": "27 months continuous coverage since policy start.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "27 months continuous coverage since policy start.",
+                "source": "policy.pdf",
+                "page": 8,
+                "section": "WHAT WE EXCLUDE",
+                "chunk_id": "10e329d5bff4"
+              }
+            ]
+          },
+          {
+            "finding": "Pre-existing condition with 27 months coverage vs 48-month waiting period.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "Pre-existing condition with 27 months coverage vs 48-month waiting period.",
+                "source": "policy.pdf",
+                "page": 8,
+                "section": "WHAT WE EXCLUDE",
+                "chunk_id": "10e329d5bff4"
+              }
+            ]
+          },
+          {
+            "finding": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+                "source": "policy.pdf",
+                "page": 8,
+                "section": "WHAT WE EXCLUDE",
+                "chunk_id": "10e329d5bff4"
+              }
+            ]
+          }
+        ],
+        "applicable_limits": [],
+        "missing_evidence": [],
+        "citations": [
+          {
+            "claim": "27 months continuous coverage since policy start.",
+            "source": "policy.pdf",
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "10e329d5bff4"
+          },
+          {
+            "claim": "Pre-existing condition with 27 months coverage vs 48-month waiting period.",
+            "source": "policy.pdf",
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "10e329d5bff4"
+          },
+          {
+            "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "source": "policy.pdf",
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "10e329d5bff4"
+          }
+        ],
+        "validation": {
+          "status": "PASS",
+          "unsupported_claims": []
+        },
+        "trace": [
+          {
+            "agent": "CaseAnalysis",
+            "action": "Identified 6 investigation dimensions, 2 missing fields",
+            "duration_ms": 0,
+            "evidence_count": 0,
+            "metadata": {
+              "dimensions": [
+                "pre_existing",
+                "waiting_period",
+                "coverage_scope",
+                "exclusions",
+                "evidence_sufficiency",
+                "category_limits"
+              ]
+            }
+          },
+          {
+            "agent": "PolicyEvidence",
+            "action": "Retrieved evidence for 6 dimensions",
+            "duration_ms": 7884,
+            "evidence_count": 48,
+            "metadata": {
+              "pre_existing": 8,
+              "waiting_period": 8,
+              "coverage_scope": 8,
+              "exclusions": 8,
+              "evidence_sufficiency": 8,
+              "category_limits": 8
+            }
+          },
+          {
+            "agent": "CoverageExclusion",
+            "action": "Assessed 3 dimensions, admissible: False",
+            "duration_ms": 0,
+            "evidence_count": 48,
+            "metadata": {
+              "blocking_issues": [
+                "Pre-existing disease waiting period (48 months) not satisfied"
+              ]
+            }
+          },
+          {
+            "agent": "Decision",
+            "action": "Decision: NOT_ADMISSIBLE, confidence 0.70",
+            "duration_ms": 0,
+            "evidence_count": 3,
+            "metadata": {
+              "reasoning": "- Pre-existing disease waiting period (48 months) not satisfied"
+            }
+          },
+          {
+            "agent": "Validation",
+            "action": "Validation: PASS, 0 unsupported claims",
+            "duration_ms": 0,
+            "evidence_count": 0,
+            "metadata": {
+              "unsupported_claims": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "PUB-004",
+      "predicted_decision": "NOT_ADMISSIBLE",
+      "expected_decision": "NOT_ADMISSIBLE",
+      "correct": true,
+      "confidence": 0.7,
+      "confidence_ok": true,
+      "abstained": false,
+      "evidence_per_dimension": {
+        "domiciliary_conditions": 8,
+        "waiting_period": 8,
+        "coverage_scope": 8,
+        "exclusions": 8,
+        "evidence_sufficiency": 8,
+        "category_limits": 8
+      },
+      "total_evidence_retrieved": 48,
+      "citation_count": 3,
+      "citation_hit_rate": 1.0,
+      "validation_status": "PASS",
+      "unsupported_claims": [],
+      "missing_evidence": [],
+      "trace": [
+        {
+          "agent": "CaseAnalysis",
+          "action": "Identified 6 investigation dimensions, 1 missing fields",
+          "duration_ms": 0,
+          "evidence_count": 0,
+          "metadata": {
+            "dimensions": [
+              "domiciliary_conditions",
+              "waiting_period",
+              "coverage_scope",
+              "exclusions",
+              "evidence_sufficiency",
+              "category_limits"
+            ]
+          }
+        },
+        {
+          "agent": "PolicyEvidence",
+          "action": "Retrieved evidence for 6 dimensions",
+          "duration_ms": 7361,
+          "evidence_count": 48,
+          "metadata": {
+            "domiciliary_conditions": 8,
+            "waiting_period": 8,
+            "coverage_scope": 8,
+            "exclusions": 8,
+            "evidence_sufficiency": 8,
+            "category_limits": 8
+          }
+        },
+        {
+          "agent": "CoverageExclusion",
+          "action": "Assessed 3 dimensions, admissible: False",
+          "duration_ms": 0,
+          "evidence_count": 48,
+          "metadata": {
+            "blocking_issues": [
+              "Domiciliary conditions not fully satisfied (room unavailable AND patient cannot be moved required)"
+            ]
+          }
+        },
+        {
+          "agent": "Decision",
+          "action": "Decision: NOT_ADMISSIBLE, confidence 0.70",
+          "duration_ms": 0,
+          "evidence_count": 3,
+          "metadata": {
+            "reasoning": "Domiciliary treatment not admissible: policy requires both room unavailability and patient-cannot-be-moved."
+          }
+        },
+        {
+          "agent": "Validation",
+          "action": "Validation: PASS, 0 unsupported claims",
+          "duration_ms": 0,
+          "evidence_count": 0,
+          "metadata": {
+            "unsupported_claims": []
+          }
+        }
+      ],
+      "full_result": {
+        "case_id": "PUB-004",
+        "decision": "NOT_ADMISSIBLE",
+        "confidence": 0.7,
+        "key_findings": [
+          {
+            "finding": "28 months continuous coverage since policy start.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "28 months continuous coverage since policy start.",
+                "source": "policy.pdf",
+                "page": 2,
+                "section": "DEFINITIONS",
+                "chunk_id": "c8699d2e4460"
+              }
+            ]
+          },
+          {
+            "finding": "Domiciliary conditions: room unavailable=True, patient cannot be moved=False. Policy requires both to be satisfied.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "Domiciliary conditions: room unavailable=True, patient cannot be moved=False. Policy requires both to be satisfied.",
+                "source": "policy.pdf",
+                "page": 2,
+                "section": "DEFINITIONS",
+                "chunk_id": "c8699d2e4460"
+              }
+            ]
+          },
+          {
+            "finding": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+                "source": "policy.pdf",
+                "page": 2,
+                "section": "DEFINITIONS",
+                "chunk_id": "c8699d2e4460"
+              }
+            ]
+          }
+        ],
+        "applicable_limits": [],
+        "missing_evidence": [],
+        "citations": [
+          {
+            "claim": "28 months continuous coverage since policy start.",
+            "source": "policy.pdf",
+            "page": 2,
+            "section": "DEFINITIONS",
+            "chunk_id": "c8699d2e4460"
+          },
+          {
+            "claim": "Domiciliary conditions: room unavailable=True, patient cannot be moved=False. Policy requires both to be satisfied.",
+            "source": "policy.pdf",
+            "page": 2,
+            "section": "DEFINITIONS",
+            "chunk_id": "c8699d2e4460"
+          },
+          {
+            "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "source": "policy.pdf",
+            "page": 2,
+            "section": "DEFINITIONS",
+            "chunk_id": "c8699d2e4460"
+          }
+        ],
+        "validation": {
+          "status": "PASS",
+          "unsupported_claims": []
+        },
+        "trace": [
+          {
+            "agent": "CaseAnalysis",
+            "action": "Identified 6 investigation dimensions, 1 missing fields",
+            "duration_ms": 0,
+            "evidence_count": 0,
+            "metadata": {
+              "dimensions": [
+                "domiciliary_conditions",
+                "waiting_period",
+                "coverage_scope",
+                "exclusions",
+                "evidence_sufficiency",
+                "category_limits"
+              ]
+            }
+          },
+          {
+            "agent": "PolicyEvidence",
+            "action": "Retrieved evidence for 6 dimensions",
+            "duration_ms": 7361,
+            "evidence_count": 48,
+            "metadata": {
+              "domiciliary_conditions": 8,
+              "waiting_period": 8,
+              "coverage_scope": 8,
+              "exclusions": 8,
+              "evidence_sufficiency": 8,
+              "category_limits": 8
+            }
+          },
+          {
+            "agent": "CoverageExclusion",
+            "action": "Assessed 3 dimensions, admissible: False",
+            "duration_ms": 0,
+            "evidence_count": 48,
+            "metadata": {
+              "blocking_issues": [
+                "Domiciliary conditions not fully satisfied (room unavailable AND patient cannot be moved required)"
+              ]
+            }
+          },
+          {
+            "agent": "Decision",
+            "action": "Decision: NOT_ADMISSIBLE, confidence 0.70",
+            "duration_ms": 0,
+            "evidence_count": 3,
+            "metadata": {
+              "reasoning": "Domiciliary treatment not admissible: policy requires both room unavailability and patient-cannot-be-moved."
+            }
+          },
+          {
+            "agent": "Validation",
+            "action": "Validation: PASS, 0 unsupported claims",
+            "duration_ms": 0,
+            "evidence_count": 0,
+            "metadata": {
+              "unsupported_claims": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "PUB-005",
+      "predicted_decision": "ADMISSIBLE",
+      "expected_decision": "ADMISSIBLE",
+      "correct": true,
+      "confidence": 0.7,
+      "confidence_ok": true,
+      "abstained": false,
+      "evidence_per_dimension": {
+        "day_care_qualification": 8,
+        "waiting_period": 8,
+        "coverage_scope": 8,
+        "exclusions": 8,
+        "evidence_sufficiency": 8,
+        "category_limits": 8
+      },
+      "total_evidence_retrieved": 48,
+      "citation_count": 3,
+      "citation_hit_rate": 1.0,
+      "validation_status": "PASS",
+      "unsupported_claims": [],
+      "missing_evidence": [],
+      "trace": [
+        {
+          "agent": "CaseAnalysis",
+          "action": "Identified 6 investigation dimensions, 2 missing fields",
+          "duration_ms": 0,
+          "evidence_count": 0,
+          "metadata": {
+            "dimensions": [
+              "day_care_qualification",
+              "waiting_period",
+              "coverage_scope",
+              "exclusions",
+              "evidence_sufficiency",
+              "category_limits"
+            ]
+          }
+        },
+        {
+          "agent": "PolicyEvidence",
+          "action": "Retrieved evidence for 6 dimensions",
+          "duration_ms": 8941,
+          "evidence_count": 48,
+          "metadata": {
+            "day_care_qualification": 8,
+            "waiting_period": 8,
+            "coverage_scope": 8,
+            "exclusions": 8,
+            "evidence_sufficiency": 8,
+            "category_limits": 8
+          }
+        },
+        {
+          "agent": "CoverageExclusion",
+          "action": "Assessed 3 dimensions, admissible: True",
+          "duration_ms": 1,
+          "evidence_count": 48,
+          "metadata": {
+            "blocking_issues": []
+          }
+        },
+        {
+          "agent": "Decision",
+          "action": "Decision: ADMISSIBLE, confidence 0.70",
+          "duration_ms": 0,
+          "evidence_count": 3,
+          "metadata": {
+            "reasoning": "Claim admissible with no material limit exceeded."
+          }
+        },
+        {
+          "agent": "Validation",
+          "action": "Validation: PASS, 0 unsupported claims",
+          "duration_ms": 0,
+          "evidence_count": 0,
+          "metadata": {
+            "unsupported_claims": []
+          }
+        }
+      ],
+      "full_result": {
+        "case_id": "PUB-005",
+        "decision": "ADMISSIBLE",
+        "confidence": 0.7,
+        "key_findings": [
+          {
+            "finding": "29 months continuous coverage since policy start.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "29 months continuous coverage since policy start.",
+                "source": "policy.pdf",
+                "page": 2,
+                "section": "DEFINITIONS",
+                "chunk_id": "a3fc1879a3b5"
+              }
+            ]
+          },
+          {
+            "finding": "Day care treatment with 8 hours admission qualifies under policy.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "Day care treatment with 8 hours admission qualifies under policy.",
+                "source": "policy.pdf",
+                "page": 2,
+                "section": "DEFINITIONS",
+                "chunk_id": "a3fc1879a3b5"
+              }
+            ]
+          },
+          {
+            "finding": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+                "source": "policy.pdf",
+                "page": 2,
+                "section": "DEFINITIONS",
+                "chunk_id": "a3fc1879a3b5"
+              }
+            ]
+          }
+        ],
+        "applicable_limits": [],
+        "missing_evidence": [],
+        "citations": [
+          {
+            "claim": "29 months continuous coverage since policy start.",
+            "source": "policy.pdf",
+            "page": 2,
+            "section": "DEFINITIONS",
+            "chunk_id": "a3fc1879a3b5"
+          },
+          {
+            "claim": "Day care treatment with 8 hours admission qualifies under policy.",
+            "source": "policy.pdf",
+            "page": 2,
+            "section": "DEFINITIONS",
+            "chunk_id": "a3fc1879a3b5"
+          },
+          {
+            "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "source": "policy.pdf",
+            "page": 2,
+            "section": "DEFINITIONS",
+            "chunk_id": "a3fc1879a3b5"
+          }
+        ],
+        "validation": {
+          "status": "PASS",
+          "unsupported_claims": []
+        },
+        "trace": [
+          {
+            "agent": "CaseAnalysis",
+            "action": "Identified 6 investigation dimensions, 2 missing fields",
+            "duration_ms": 0,
+            "evidence_count": 0,
+            "metadata": {
+              "dimensions": [
+                "day_care_qualification",
+                "waiting_period",
+                "coverage_scope",
+                "exclusions",
+                "evidence_sufficiency",
+                "category_limits"
+              ]
+            }
+          },
+          {
+            "agent": "PolicyEvidence",
+            "action": "Retrieved evidence for 6 dimensions",
+            "duration_ms": 8941,
+            "evidence_count": 48,
+            "metadata": {
+              "day_care_qualification": 8,
+              "waiting_period": 8,
+              "coverage_scope": 8,
+              "exclusions": 8,
+              "evidence_sufficiency": 8,
+              "category_limits": 8
+            }
+          },
+          {
+            "agent": "CoverageExclusion",
+            "action": "Assessed 3 dimensions, admissible: True",
+            "duration_ms": 1,
+            "evidence_count": 48,
+            "metadata": {
+              "blocking_issues": []
+            }
+          },
+          {
+            "agent": "Decision",
+            "action": "Decision: ADMISSIBLE, confidence 0.70",
+            "duration_ms": 0,
+            "evidence_count": 3,
+            "metadata": {
+              "reasoning": "Claim admissible with no material limit exceeded."
+            }
+          },
+          {
+            "agent": "Validation",
+            "action": "Validation: PASS, 0 unsupported claims",
+            "duration_ms": 0,
+            "evidence_count": 0,
+            "metadata": {
+              "unsupported_claims": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "PUB-006",
+      "predicted_decision": "NEEDS_REVIEW",
+      "expected_decision": "NEEDS_REVIEW",
+      "correct": true,
+      "confidence": 0.7,
+      "confidence_ok": true,
+      "abstained": true,
+      "evidence_per_dimension": {
+        "waiting_period": 8,
+        "coverage_scope": 8,
+        "exclusions": 8,
+        "evidence_sufficiency": 8,
+        "category_limits": 8
+      },
+      "total_evidence_retrieved": 40,
+      "citation_count": 2,
+      "citation_hit_rate": 1.0,
+      "validation_status": "PASS",
+      "unsupported_claims": [],
+      "missing_evidence": [
+        "medical necessity confirmation"
+      ],
+      "trace": [
+        {
+          "agent": "CaseAnalysis",
+          "action": "Identified 5 investigation dimensions, 3 missing fields",
+          "duration_ms": 4,
+          "evidence_count": 0,
+          "metadata": {
+            "dimensions": [
+              "waiting_period",
+              "coverage_scope",
+              "exclusions",
+              "evidence_sufficiency",
+              "category_limits"
+            ]
+          }
+        },
+        {
+          "agent": "PolicyEvidence",
+          "action": "Retrieved evidence for 5 dimensions",
+          "duration_ms": 7733,
+          "evidence_count": 40,
+          "metadata": {
+            "waiting_period": 8,
+            "coverage_scope": 8,
+            "exclusions": 8,
+            "evidence_sufficiency": 8,
+            "category_limits": 8
+          }
+        },
+        {
+          "agent": "CoverageExclusion",
+          "action": "Assessed 2 dimensions, admissible: True",
+          "duration_ms": 0,
+          "evidence_count": 40,
+          "metadata": {
+            "blocking_issues": []
+          }
+        },
+        {
+          "agent": "Decision",
+          "action": "Decision: NEEDS_REVIEW, confidence 0.70",
+          "duration_ms": 0,
+          "evidence_count": 2,
+          "metadata": {
+            "reasoning": "Medical necessity not confirmed - insufficient evidence for admission decision."
+          }
+        },
+        {
+          "agent": "Validation",
+          "action": "Validation: PASS, 0 unsupported claims",
+          "duration_ms": 0,
+          "evidence_count": 0,
+          "metadata": {
+            "unsupported_claims": []
+          }
+        }
+      ],
+      "full_result": {
+        "case_id": "PUB-006",
+        "decision": "NEEDS_REVIEW",
+        "confidence": 0.7,
+        "key_findings": [
+          {
+            "finding": "30 months continuous coverage since policy start.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "30 months continuous coverage since policy start.",
+                "source": "policy.pdf",
+                "page": 8,
+                "section": "WHAT WE EXCLUDE",
+                "chunk_id": "10e329d5bff4"
+              }
+            ]
+          },
+          {
+            "finding": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+                "source": "policy.pdf",
+                "page": 8,
+                "section": "WHAT WE EXCLUDE",
+                "chunk_id": "10e329d5bff4"
+              }
+            ]
+          }
+        ],
+        "applicable_limits": [],
+        "missing_evidence": [
+          "medical necessity confirmation"
+        ],
+        "citations": [
+          {
+            "claim": "30 months continuous coverage since policy start.",
+            "source": "policy.pdf",
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "10e329d5bff4"
+          },
+          {
+            "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "source": "policy.pdf",
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "10e329d5bff4"
+          }
+        ],
+        "validation": {
+          "status": "PASS",
+          "unsupported_claims": []
+        },
+        "trace": [
+          {
+            "agent": "CaseAnalysis",
+            "action": "Identified 5 investigation dimensions, 3 missing fields",
+            "duration_ms": 4,
+            "evidence_count": 0,
+            "metadata": {
+              "dimensions": [
+                "waiting_period",
+                "coverage_scope",
+                "exclusions",
+                "evidence_sufficiency",
+                "category_limits"
+              ]
+            }
+          },
+          {
+            "agent": "PolicyEvidence",
+            "action": "Retrieved evidence for 5 dimensions",
+            "duration_ms": 7733,
+            "evidence_count": 40,
+            "metadata": {
+              "waiting_period": 8,
+              "coverage_scope": 8,
+              "exclusions": 8,
+              "evidence_sufficiency": 8,
+              "category_limits": 8
+            }
+          },
+          {
+            "agent": "CoverageExclusion",
+            "action": "Assessed 2 dimensions, admissible: True",
+            "duration_ms": 0,
+            "evidence_count": 40,
+            "metadata": {
+              "blocking_issues": []
+            }
+          },
+          {
+            "agent": "Decision",
+            "action": "Decision: NEEDS_REVIEW, confidence 0.70",
+            "duration_ms": 0,
+            "evidence_count": 2,
+            "metadata": {
+              "reasoning": "Medical necessity not confirmed - insufficient evidence for admission decision."
+            }
+          },
+          {
+            "agent": "Validation",
+            "action": "Validation: PASS, 0 unsupported claims",
+            "duration_ms": 0,
+            "evidence_count": 0,
+            "metadata": {
+              "unsupported_claims": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "PUB-007",
+      "predicted_decision": "ADMISSIBLE_WITH_LIMITS",
+      "expected_decision": "ADMISSIBLE_WITH_LIMITS",
+      "correct": true,
+      "confidence": 0.7,
+      "confidence_ok": true,
+      "abstained": false,
+      "evidence_per_dimension": {
+        "waiting_period": 8,
+        "coverage_scope": 8,
+        "exclusions": 8,
+        "evidence_sufficiency": 8,
+        "category_limits": 8
+      },
+      "total_evidence_retrieved": 40,
+      "citation_count": 2,
+      "citation_hit_rate": 1.0,
+      "validation_status": "PASS",
+      "unsupported_claims": [],
+      "missing_evidence": [],
+      "trace": [
+        {
+          "agent": "CaseAnalysis",
+          "action": "Identified 5 investigation dimensions, 2 missing fields",
+          "duration_ms": 0,
+          "evidence_count": 0,
+          "metadata": {
+            "dimensions": [
+              "waiting_period",
+              "coverage_scope",
+              "exclusions",
+              "evidence_sufficiency",
+              "category_limits"
+            ]
+          }
+        },
+        {
+          "agent": "PolicyEvidence",
+          "action": "Retrieved evidence for 5 dimensions",
+          "duration_ms": 6532,
+          "evidence_count": 40,
+          "metadata": {
+            "waiting_period": 8,
+            "coverage_scope": 8,
+            "exclusions": 8,
+            "evidence_sufficiency": 8,
+            "category_limits": 8
+          }
+        },
+        {
+          "agent": "CoverageExclusion",
+          "action": "Assessed 2 dimensions, admissible: True",
+          "duration_ms": 0,
+          "evidence_count": 40,
+          "metadata": {
+            "blocking_issues": []
+          }
+        },
+        {
+          "agent": "Decision",
+          "action": "Decision: ADMISSIBLE_WITH_LIMITS, confidence 0.70",
+          "duration_ms": 0,
+          "evidence_count": 2,
+          "metadata": {
+            "reasoning": "Claim admissible but one or more category sub-limits are exceeded."
+          }
+        },
+        {
+          "agent": "Validation",
+          "action": "Validation: PASS, 0 unsupported claims",
+          "duration_ms": 0,
+          "evidence_count": 0,
+          "metadata": {
+            "unsupported_claims": []
+          }
+        }
+      ],
+      "full_result": {
+        "case_id": "PUB-007",
+        "decision": "ADMISSIBLE_WITH_LIMITS",
+        "confidence": 0.7,
+        "key_findings": [
+          {
+            "finding": "31 months continuous coverage since policy start.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "31 months continuous coverage since policy start.",
+                "source": "policy.pdf",
+                "page": 8,
+                "section": "WHAT WE EXCLUDE",
+                "chunk_id": "10e329d5bff4"
+              }
+            ]
+          },
+          {
+            "finding": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+                "source": "policy.pdf",
+                "page": 8,
+                "section": "WHAT WE EXCLUDE",
+                "chunk_id": "10e329d5bff4"
+              }
+            ]
+          }
+        ],
+        "applicable_limits": [],
+        "missing_evidence": [],
+        "citations": [
+          {
+            "claim": "31 months continuous coverage since policy start.",
+            "source": "policy.pdf",
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "10e329d5bff4"
+          },
+          {
+            "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "source": "policy.pdf",
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "10e329d5bff4"
+          }
+        ],
+        "validation": {
+          "status": "PASS",
+          "unsupported_claims": []
+        },
+        "trace": [
+          {
+            "agent": "CaseAnalysis",
+            "action": "Identified 5 investigation dimensions, 2 missing fields",
+            "duration_ms": 0,
+            "evidence_count": 0,
+            "metadata": {
+              "dimensions": [
+                "waiting_period",
+                "coverage_scope",
+                "exclusions",
+                "evidence_sufficiency",
+                "category_limits"
+              ]
+            }
+          },
+          {
+            "agent": "PolicyEvidence",
+            "action": "Retrieved evidence for 5 dimensions",
+            "duration_ms": 6532,
+            "evidence_count": 40,
+            "metadata": {
+              "waiting_period": 8,
+              "coverage_scope": 8,
+              "exclusions": 8,
+              "evidence_sufficiency": 8,
+              "category_limits": 8
+            }
+          },
+          {
+            "agent": "CoverageExclusion",
+            "action": "Assessed 2 dimensions, admissible: True",
+            "duration_ms": 0,
+            "evidence_count": 40,
+            "metadata": {
+              "blocking_issues": []
+            }
+          },
+          {
+            "agent": "Decision",
+            "action": "Decision: ADMISSIBLE_WITH_LIMITS, confidence 0.70",
+            "duration_ms": 0,
+            "evidence_count": 2,
+            "metadata": {
+              "reasoning": "Claim admissible but one or more category sub-limits are exceeded."
+            }
+          },
+          {
+            "agent": "Validation",
+            "action": "Validation: PASS, 0 unsupported claims",
+            "duration_ms": 0,
+            "evidence_count": 0,
+            "metadata": {
+              "unsupported_claims": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "PUB-008",
+      "predicted_decision": "NOT_ADMISSIBLE",
+      "expected_decision": "NOT_ADMISSIBLE",
+      "correct": true,
+      "confidence": 0.7,
+      "confidence_ok": true,
+      "abstained": false,
+      "evidence_per_dimension": {
+        "waiting_period": 8,
+        "coverage_scope": 8,
+        "exclusions": 8,
+        "evidence_sufficiency": 8,
+        "category_limits": 8
+      },
+      "total_evidence_retrieved": 40,
+      "citation_count": 3,
+      "citation_hit_rate": 1.0,
+      "validation_status": "PASS",
+      "unsupported_claims": [],
+      "missing_evidence": [],
+      "trace": [
+        {
+          "agent": "CaseAnalysis",
+          "action": "Identified 5 investigation dimensions, 2 missing fields",
+          "duration_ms": 0,
+          "evidence_count": 0,
+          "metadata": {
+            "dimensions": [
+              "waiting_period",
+              "coverage_scope",
+              "exclusions",
+              "evidence_sufficiency",
+              "category_limits"
+            ]
+          }
+        },
+        {
+          "agent": "PolicyEvidence",
+          "action": "Retrieved evidence for 5 dimensions",
+          "duration_ms": 7345,
+          "evidence_count": 40,
+          "metadata": {
+            "waiting_period": 8,
+            "coverage_scope": 8,
+            "exclusions": 8,
+            "evidence_sufficiency": 8,
+            "category_limits": 8
+          }
+        },
+        {
+          "agent": "CoverageExclusion",
+          "action": "Assessed 3 dimensions, admissible: False",
+          "duration_ms": 0,
+          "evidence_count": 40,
+          "metadata": {
+            "blocking_issues": [
+              "Treatment excluded by policy exclusions"
+            ]
+          }
+        },
+        {
+          "agent": "Decision",
+          "action": "Decision: NOT_ADMISSIBLE, confidence 0.70",
+          "duration_ms": 0,
+          "evidence_count": 3,
+          "metadata": {
+            "reasoning": "- Treatment excluded by policy exclusions"
+          }
+        },
+        {
+          "agent": "Validation",
+          "action": "Validation: PASS, 0 unsupported claims",
+          "duration_ms": 0,
+          "evidence_count": 0,
+          "metadata": {
+            "unsupported_claims": []
+          }
+        }
+      ],
+      "full_result": {
+        "case_id": "PUB-008",
+        "decision": "NOT_ADMISSIBLE",
+        "confidence": 0.7,
+        "key_findings": [
+          {
+            "finding": "32 months continuous coverage since policy start.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "32 months continuous coverage since policy start.",
+                "source": "policy.pdf",
+                "page": 8,
+                "section": "WHAT WE EXCLUDE",
+                "chunk_id": "10e329d5bff4"
+              }
+            ]
+          },
+          {
+            "finding": "Diagnosis 'cosmetic condition' is excluded by the policy (cosmetic/dental/other exclusions).",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "Diagnosis 'cosmetic condition' is excluded by the policy (cosmetic/dental/other exclusions).",
+                "source": "policy.pdf",
+                "page": 9,
+                "section": "WHAT WE EXCLUDE",
+                "chunk_id": "f828d01785b0"
+              }
+            ]
+          },
+          {
+            "finding": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+                "source": "policy.pdf",
+                "page": 8,
+                "section": "WHAT WE EXCLUDE",
+                "chunk_id": "10e329d5bff4"
+              }
+            ]
+          }
+        ],
+        "applicable_limits": [],
+        "missing_evidence": [],
+        "citations": [
+          {
+            "claim": "32 months continuous coverage since policy start.",
+            "source": "policy.pdf",
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "10e329d5bff4"
+          },
+          {
+            "claim": "Diagnosis 'cosmetic condition' is excluded by the policy (cosmetic/dental/other exclusions).",
+            "source": "policy.pdf",
+            "page": 9,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "f828d01785b0"
+          },
+          {
+            "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "source": "policy.pdf",
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "10e329d5bff4"
+          }
+        ],
+        "validation": {
+          "status": "PASS",
+          "unsupported_claims": []
+        },
+        "trace": [
+          {
+            "agent": "CaseAnalysis",
+            "action": "Identified 5 investigation dimensions, 2 missing fields",
+            "duration_ms": 0,
+            "evidence_count": 0,
+            "metadata": {
+              "dimensions": [
+                "waiting_period",
+                "coverage_scope",
+                "exclusions",
+                "evidence_sufficiency",
+                "category_limits"
+              ]
+            }
+          },
+          {
+            "agent": "PolicyEvidence",
+            "action": "Retrieved evidence for 5 dimensions",
+            "duration_ms": 7345,
+            "evidence_count": 40,
+            "metadata": {
+              "waiting_period": 8,
+              "coverage_scope": 8,
+              "exclusions": 8,
+              "evidence_sufficiency": 8,
+              "category_limits": 8
+            }
+          },
+          {
+            "agent": "CoverageExclusion",
+            "action": "Assessed 3 dimensions, admissible: False",
+            "duration_ms": 0,
+            "evidence_count": 40,
+            "metadata": {
+              "blocking_issues": [
+                "Treatment excluded by policy exclusions"
+              ]
+            }
+          },
+          {
+            "agent": "Decision",
+            "action": "Decision: NOT_ADMISSIBLE, confidence 0.70",
+            "duration_ms": 0,
+            "evidence_count": 3,
+            "metadata": {
+              "reasoning": "- Treatment excluded by policy exclusions"
+            }
+          },
+          {
+            "agent": "Validation",
+            "action": "Validation: PASS, 0 unsupported claims",
+            "duration_ms": 0,
+            "evidence_count": 0,
+            "metadata": {
+              "unsupported_claims": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "PUB-009",
+      "predicted_decision": "ADMISSIBLE",
+      "expected_decision": "ADMISSIBLE",
+      "correct": true,
+      "confidence": 0.7,
+      "confidence_ok": true,
+      "abstained": false,
+      "evidence_per_dimension": {
+        "waiting_period": 8,
+        "coverage_scope": 8,
+        "exclusions": 8,
+        "evidence_sufficiency": 8,
+        "pre_post_hospitalization": 8,
+        "category_limits": 8
+      },
+      "total_evidence_retrieved": 48,
+      "citation_count": 2,
+      "citation_hit_rate": 1.0,
+      "validation_status": "PASS",
+      "unsupported_claims": [],
+      "missing_evidence": [],
+      "trace": [
+        {
+          "agent": "CaseAnalysis",
+          "action": "Identified 6 investigation dimensions, 2 missing fields",
+          "duration_ms": 0,
+          "evidence_count": 0,
+          "metadata": {
+            "dimensions": [
+              "waiting_period",
+              "coverage_scope",
+              "exclusions",
+              "evidence_sufficiency",
+              "pre_post_hospitalization",
+              "category_limits"
+            ]
+          }
+        },
+        {
+          "agent": "PolicyEvidence",
+          "action": "Retrieved evidence for 6 dimensions",
+          "duration_ms": 8900,
+          "evidence_count": 48,
+          "metadata": {
+            "waiting_period": 8,
+            "coverage_scope": 8,
+            "exclusions": 8,
+            "evidence_sufficiency": 8,
+            "pre_post_hospitalization": 8,
+            "category_limits": 8
+          }
+        },
+        {
+          "agent": "CoverageExclusion",
+          "action": "Assessed 2 dimensions, admissible: True",
+          "duration_ms": 1,
+          "evidence_count": 48,
+          "metadata": {
+            "blocking_issues": []
+          }
+        },
+        {
+          "agent": "Decision",
+          "action": "Decision: ADMISSIBLE, confidence 0.70",
+          "duration_ms": 0,
+          "evidence_count": 2,
+          "metadata": {
+            "reasoning": "Claim admissible with no material limit exceeded."
+          }
+        },
+        {
+          "agent": "Validation",
+          "action": "Validation: PASS, 0 unsupported claims",
+          "duration_ms": 0,
+          "evidence_count": 0,
+          "metadata": {
+            "unsupported_claims": []
+          }
+        }
+      ],
+      "full_result": {
+        "case_id": "PUB-009",
+        "decision": "ADMISSIBLE",
+        "confidence": 0.7,
+        "key_findings": [
+          {
+            "finding": "32 months continuous coverage since policy start.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "32 months continuous coverage since policy start.",
+                "source": "policy.pdf",
+                "page": 8,
+                "section": "WHAT WE EXCLUDE",
+                "chunk_id": "10e329d5bff4"
+              }
+            ]
+          },
+          {
+            "finding": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+                "source": "policy.pdf",
+                "page": 8,
+                "section": "WHAT WE EXCLUDE",
+                "chunk_id": "10e329d5bff4"
+              }
+            ]
+          }
+        ],
+        "applicable_limits": [],
+        "missing_evidence": [],
+        "citations": [
+          {
+            "claim": "32 months continuous coverage since policy start.",
+            "source": "policy.pdf",
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "10e329d5bff4"
+          },
+          {
+            "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "source": "policy.pdf",
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "10e329d5bff4"
+          }
+        ],
+        "validation": {
+          "status": "PASS",
+          "unsupported_claims": []
+        },
+        "trace": [
+          {
+            "agent": "CaseAnalysis",
+            "action": "Identified 6 investigation dimensions, 2 missing fields",
+            "duration_ms": 0,
+            "evidence_count": 0,
+            "metadata": {
+              "dimensions": [
+                "waiting_period",
+                "coverage_scope",
+                "exclusions",
+                "evidence_sufficiency",
+                "pre_post_hospitalization",
+                "category_limits"
+              ]
+            }
+          },
+          {
+            "agent": "PolicyEvidence",
+            "action": "Retrieved evidence for 6 dimensions",
+            "duration_ms": 8900,
+            "evidence_count": 48,
+            "metadata": {
+              "waiting_period": 8,
+              "coverage_scope": 8,
+              "exclusions": 8,
+              "evidence_sufficiency": 8,
+              "pre_post_hospitalization": 8,
+              "category_limits": 8
+            }
+          },
+          {
+            "agent": "CoverageExclusion",
+            "action": "Assessed 2 dimensions, admissible: True",
+            "duration_ms": 1,
+            "evidence_count": 48,
+            "metadata": {
+              "blocking_issues": []
+            }
+          },
+          {
+            "agent": "Decision",
+            "action": "Decision: ADMISSIBLE, confidence 0.70",
+            "duration_ms": 0,
+            "evidence_count": 2,
+            "metadata": {
+              "reasoning": "Claim admissible with no material limit exceeded."
+            }
+          },
+          {
+            "agent": "Validation",
+            "action": "Validation: PASS, 0 unsupported claims",
+            "duration_ms": 0,
+            "evidence_count": 0,
+            "metadata": {
+              "unsupported_claims": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "PUB-010",
+      "predicted_decision": "ADMISSIBLE",
+      "expected_decision": "ADMISSIBLE",
+      "correct": true,
+      "confidence": 0.7,
+      "confidence_ok": true,
+      "abstained": false,
+      "evidence_per_dimension": {
+        "portability": 8,
+        "day_care_qualification": 8,
+        "waiting_period": 8,
+        "coverage_scope": 8,
+        "exclusions": 8,
+        "evidence_sufficiency": 8,
+        "category_limits": 8
+      },
+      "total_evidence_retrieved": 56,
+      "citation_count": 3,
+      "citation_hit_rate": 1.0,
+      "validation_status": "PASS",
+      "unsupported_claims": [],
+      "missing_evidence": [],
+      "trace": [
+        {
+          "agent": "CaseAnalysis",
+          "action": "Identified 7 investigation dimensions, 2 missing fields",
+          "duration_ms": 0,
+          "evidence_count": 0,
+          "metadata": {
+            "dimensions": [
+              "portability",
+              "day_care_qualification",
+              "waiting_period",
+              "coverage_scope",
+              "exclusions",
+              "evidence_sufficiency",
+              "category_limits"
+            ]
+          }
+        },
+        {
+          "agent": "PolicyEvidence",
+          "action": "Retrieved evidence for 7 dimensions",
+          "duration_ms": 10403,
+          "evidence_count": 56,
+          "metadata": {
+            "portability": 8,
+            "day_care_qualification": 8,
+            "waiting_period": 8,
+            "coverage_scope": 8,
+            "exclusions": 8,
+            "evidence_sufficiency": 8,
+            "category_limits": 8
+          }
+        },
+        {
+          "agent": "CoverageExclusion",
+          "action": "Assessed 3 dimensions, admissible: True",
+          "duration_ms": 0,
+          "evidence_count": 56,
+          "metadata": {
+            "blocking_issues": []
+          }
+        },
+        {
+          "agent": "Decision",
+          "action": "Decision: ADMISSIBLE, confidence 0.70",
+          "duration_ms": 0,
+          "evidence_count": 3,
+          "metadata": {
+            "reasoning": "Claim admissible with no material limit exceeded."
+          }
+        },
+        {
+          "agent": "Validation",
+          "action": "Validation: PASS, 0 unsupported claims",
+          "duration_ms": 0,
+          "evidence_count": 0,
+          "metadata": {
+            "unsupported_claims": []
+          }
+        }
+      ],
+      "full_result": {
+        "case_id": "PUB-010",
+        "decision": "ADMISSIBLE",
+        "confidence": 0.7,
+        "key_findings": [
+          {
+            "finding": "8 months continuous coverage since policy start.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "8 months continuous coverage since policy start.",
+                "source": "policy.pdf",
+                "page": 2,
+                "section": "DEFINITIONS",
+                "chunk_id": "a3fc1879a3b5"
+              }
+            ]
+          },
+          {
+            "finding": "Day care treatment with 8 hours admission qualifies under policy.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "Day care treatment with 8 hours admission qualifies under policy.",
+                "source": "policy.pdf",
+                "page": 2,
+                "section": "DEFINITIONS",
+                "chunk_id": "a3fc1879a3b5"
+              }
+            ]
+          },
+          {
+            "finding": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+                "source": "policy.pdf",
+                "page": 2,
+                "section": "DEFINITIONS",
+                "chunk_id": "a3fc1879a3b5"
+              }
+            ]
+          }
+        ],
+        "applicable_limits": [],
+        "missing_evidence": [],
+        "citations": [
+          {
+            "claim": "8 months continuous coverage since policy start.",
+            "source": "policy.pdf",
+            "page": 2,
+            "section": "DEFINITIONS",
+            "chunk_id": "a3fc1879a3b5"
+          },
+          {
+            "claim": "Day care treatment with 8 hours admission qualifies under policy.",
+            "source": "policy.pdf",
+            "page": 2,
+            "section": "DEFINITIONS",
+            "chunk_id": "a3fc1879a3b5"
+          },
+          {
+            "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "source": "policy.pdf",
+            "page": 2,
+            "section": "DEFINITIONS",
+            "chunk_id": "a3fc1879a3b5"
+          }
+        ],
+        "validation": {
+          "status": "PASS",
+          "unsupported_claims": []
+        },
+        "trace": [
+          {
+            "agent": "CaseAnalysis",
+            "action": "Identified 7 investigation dimensions, 2 missing fields",
+            "duration_ms": 0,
+            "evidence_count": 0,
+            "metadata": {
+              "dimensions": [
+                "portability",
+                "day_care_qualification",
+                "waiting_period",
+                "coverage_scope",
+                "exclusions",
+                "evidence_sufficiency",
+                "category_limits"
+              ]
+            }
+          },
+          {
+            "agent": "PolicyEvidence",
+            "action": "Retrieved evidence for 7 dimensions",
+            "duration_ms": 10403,
+            "evidence_count": 56,
+            "metadata": {
+              "portability": 8,
+              "day_care_qualification": 8,
+              "waiting_period": 8,
+              "coverage_scope": 8,
+              "exclusions": 8,
+              "evidence_sufficiency": 8,
+              "category_limits": 8
+            }
+          },
+          {
+            "agent": "CoverageExclusion",
+            "action": "Assessed 3 dimensions, admissible: True",
+            "duration_ms": 0,
+            "evidence_count": 56,
+            "metadata": {
+              "blocking_issues": []
+            }
+          },
+          {
+            "agent": "Decision",
+            "action": "Decision: ADMISSIBLE, confidence 0.70",
+            "duration_ms": 0,
+            "evidence_count": 3,
+            "metadata": {
+              "reasoning": "Claim admissible with no material limit exceeded."
+            }
+          },
+          {
+            "agent": "Validation",
+            "action": "Validation: PASS, 0 unsupported claims",
+            "duration_ms": 0,
+            "evidence_count": 0,
+            "metadata": {
+              "unsupported_claims": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "PUB-011",
+      "predicted_decision": "NEEDS_REVIEW",
+      "expected_decision": "NEEDS_REVIEW",
+      "correct": true,
+      "confidence": 0.7,
+      "confidence_ok": true,
+      "abstained": true,
+      "evidence_per_dimension": {
+        "waiting_period": 8,
+        "coverage_scope": 8,
+        "exclusions": 8,
+        "evidence_sufficiency": 8,
+        "hospital_definition": 8,
+        "category_limits": 8
+      },
+      "total_evidence_retrieved": 48,
+      "citation_count": 2,
+      "citation_hit_rate": 1.0,
+      "validation_status": "PASS",
+      "unsupported_claims": [],
+      "missing_evidence": [
+        "medical necessity confirmation"
+      ],
+      "trace": [
+        {
+          "agent": "CaseAnalysis",
+          "action": "Identified 6 investigation dimensions, 2 missing fields",
+          "duration_ms": 0,
+          "evidence_count": 0,
+          "metadata": {
+            "dimensions": [
+              "waiting_period",
+              "coverage_scope",
+              "exclusions",
+              "evidence_sufficiency",
+              "hospital_definition",
+              "category_limits"
+            ]
+          }
+        },
+        {
+          "agent": "PolicyEvidence",
+          "action": "Retrieved evidence for 6 dimensions",
+          "duration_ms": 9525,
+          "evidence_count": 48,
+          "metadata": {
+            "waiting_period": 8,
+            "coverage_scope": 8,
+            "exclusions": 8,
+            "evidence_sufficiency": 8,
+            "hospital_definition": 8,
+            "category_limits": 8
+          }
+        },
+        {
+          "agent": "CoverageExclusion",
+          "action": "Assessed 2 dimensions, admissible: True",
+          "duration_ms": 1,
+          "evidence_count": 48,
+          "metadata": {
+            "blocking_issues": []
+          }
+        },
+        {
+          "agent": "Decision",
+          "action": "Decision: NEEDS_REVIEW, confidence 0.70",
+          "duration_ms": 1,
+          "evidence_count": 2,
+          "metadata": {
+            "reasoning": "Medical necessity not confirmed - insufficient evidence for admission decision."
+          }
+        },
+        {
+          "agent": "Validation",
+          "action": "Validation: PASS, 0 unsupported claims",
+          "duration_ms": 0,
+          "evidence_count": 0,
+          "metadata": {
+            "unsupported_claims": []
+          }
+        }
+      ],
+      "full_result": {
+        "case_id": "PUB-011",
+        "decision": "NEEDS_REVIEW",
+        "confidence": 0.7,
+        "key_findings": [
+          {
+            "finding": "32 months continuous coverage since policy start.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "32 months continuous coverage since policy start.",
+                "source": "policy.pdf",
+                "page": 8,
+                "section": "WHAT WE EXCLUDE",
+                "chunk_id": "10e329d5bff4"
+              }
+            ]
+          },
+          {
+            "finding": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+                "source": "policy.pdf",
+                "page": 8,
+                "section": "WHAT WE EXCLUDE",
+                "chunk_id": "10e329d5bff4"
+              }
+            ]
+          }
+        ],
+        "applicable_limits": [],
+        "missing_evidence": [
+          "medical necessity confirmation"
+        ],
+        "citations": [
+          {
+            "claim": "32 months continuous coverage since policy start.",
+            "source": "policy.pdf",
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "10e329d5bff4"
+          },
+          {
+            "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "source": "policy.pdf",
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "10e329d5bff4"
+          }
+        ],
+        "validation": {
+          "status": "PASS",
+          "unsupported_claims": []
+        },
+        "trace": [
+          {
+            "agent": "CaseAnalysis",
+            "action": "Identified 6 investigation dimensions, 2 missing fields",
+            "duration_ms": 0,
+            "evidence_count": 0,
+            "metadata": {
+              "dimensions": [
+                "waiting_period",
+                "coverage_scope",
+                "exclusions",
+                "evidence_sufficiency",
+                "hospital_definition",
+                "category_limits"
+              ]
+            }
+          },
+          {
+            "agent": "PolicyEvidence",
+            "action": "Retrieved evidence for 6 dimensions",
+            "duration_ms": 9525,
+            "evidence_count": 48,
+            "metadata": {
+              "waiting_period": 8,
+              "coverage_scope": 8,
+              "exclusions": 8,
+              "evidence_sufficiency": 8,
+              "hospital_definition": 8,
+              "category_limits": 8
+            }
+          },
+          {
+            "agent": "CoverageExclusion",
+            "action": "Assessed 2 dimensions, admissible: True",
+            "duration_ms": 1,
+            "evidence_count": 48,
+            "metadata": {
+              "blocking_issues": []
+            }
+          },
+          {
+            "agent": "Decision",
+            "action": "Decision: NEEDS_REVIEW, confidence 0.70",
+            "duration_ms": 1,
+            "evidence_count": 2,
+            "metadata": {
+              "reasoning": "Medical necessity not confirmed - insufficient evidence for admission decision."
+            }
+          },
+          {
+            "agent": "Validation",
+            "action": "Validation: PASS, 0 unsupported claims",
+            "duration_ms": 0,
+            "evidence_count": 0,
+            "metadata": {
+              "unsupported_claims": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "PUB-012",
+      "predicted_decision": "NOT_ADMISSIBLE",
+      "expected_decision": "NOT_ADMISSIBLE",
+      "correct": true,
+      "confidence": 0.7,
+      "confidence_ok": true,
+      "abstained": false,
+      "evidence_per_dimension": {
+        "experimental_treatment": 8,
+        "waiting_period": 8,
+        "coverage_scope": 8,
+        "exclusions": 8,
+        "evidence_sufficiency": 8,
+        "category_limits": 8
+      },
+      "total_evidence_retrieved": 48,
+      "citation_count": 4,
+      "citation_hit_rate": 1.0,
+      "validation_status": "PASS",
+      "unsupported_claims": [],
+      "missing_evidence": [],
+      "trace": [
+        {
+          "agent": "CaseAnalysis",
+          "action": "Identified 6 investigation dimensions, 2 missing fields",
+          "duration_ms": 0,
+          "evidence_count": 0,
+          "metadata": {
+            "dimensions": [
+              "experimental_treatment",
+              "waiting_period",
+              "coverage_scope",
+              "exclusions",
+              "evidence_sufficiency",
+              "category_limits"
+            ]
+          }
+        },
+        {
+          "agent": "PolicyEvidence",
+          "action": "Retrieved evidence for 6 dimensions",
+          "duration_ms": 7876,
+          "evidence_count": 48,
+          "metadata": {
+            "experimental_treatment": 8,
+            "waiting_period": 8,
+            "coverage_scope": 8,
+            "exclusions": 8,
+            "evidence_sufficiency": 8,
+            "category_limits": 8
+          }
+        },
+        {
+          "agent": "CoverageExclusion",
+          "action": "Assessed 4 dimensions, admissible: False",
+          "duration_ms": 1,
+          "evidence_count": 48,
+          "metadata": {
+            "blocking_issues": [
+              "Experimental treatment exclusion applies",
+              "Treatment excluded by policy exclusions"
+            ]
+          }
+        },
+        {
+          "agent": "Decision",
+          "action": "Decision: NOT_ADMISSIBLE, confidence 0.70",
+          "duration_ms": 0,
+          "evidence_count": 4,
+          "metadata": {
+            "reasoning": "- Experimental treatment exclusion applies\n- Treatment excluded by policy exclusions"
+          }
+        },
+        {
+          "agent": "Validation",
+          "action": "Validation: PASS, 0 unsupported claims",
+          "duration_ms": 0,
+          "evidence_count": 0,
+          "metadata": {
+            "unsupported_claims": []
+          }
+        }
+      ],
+      "full_result": {
+        "case_id": "PUB-012",
+        "decision": "NOT_ADMISSIBLE",
+        "confidence": 0.7,
+        "key_findings": [
+          {
+            "finding": "32 months continuous coverage since policy start.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "32 months continuous coverage since policy start.",
+                "source": "policy.pdf",
+                "page": 6,
+                "section": "DEFINITIONS",
+                "chunk_id": "10a8f14635db"
+              }
+            ]
+          },
+          {
+            "finding": "Experimental/unproven treatment is excluded by the policy.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "Experimental/unproven treatment is excluded by the policy.",
+                "source": "policy.pdf",
+                "page": 6,
+                "section": "DEFINITIONS",
+                "chunk_id": "10a8f14635db"
+              }
+            ]
+          },
+          {
+            "finding": "Diagnosis 'experimental condition' is excluded by the policy (cosmetic/dental/other exclusions).",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "Diagnosis 'experimental condition' is excluded by the policy (cosmetic/dental/other exclusions).",
+                "source": "policy.pdf",
+                "page": 6,
+                "section": "DEFINITIONS",
+                "chunk_id": "10a8f14635db"
+              }
+            ]
+          },
+          {
+            "finding": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+                "source": "policy.pdf",
+                "page": 6,
+                "section": "DEFINITIONS",
+                "chunk_id": "10a8f14635db"
+              }
+            ]
+          }
+        ],
+        "applicable_limits": [],
+        "missing_evidence": [],
+        "citations": [
+          {
+            "claim": "32 months continuous coverage since policy start.",
+            "source": "policy.pdf",
+            "page": 6,
+            "section": "DEFINITIONS",
+            "chunk_id": "10a8f14635db"
+          },
+          {
+            "claim": "Experimental/unproven treatment is excluded by the policy.",
+            "source": "policy.pdf",
+            "page": 6,
+            "section": "DEFINITIONS",
+            "chunk_id": "10a8f14635db"
+          },
+          {
+            "claim": "Diagnosis 'experimental condition' is excluded by the policy (cosmetic/dental/other exclusions).",
+            "source": "policy.pdf",
+            "page": 6,
+            "section": "DEFINITIONS",
+            "chunk_id": "10a8f14635db"
+          },
+          {
+            "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "source": "policy.pdf",
+            "page": 6,
+            "section": "DEFINITIONS",
+            "chunk_id": "10a8f14635db"
+          }
+        ],
+        "validation": {
+          "status": "PASS",
+          "unsupported_claims": []
+        },
+        "trace": [
+          {
+            "agent": "CaseAnalysis",
+            "action": "Identified 6 investigation dimensions, 2 missing fields",
+            "duration_ms": 0,
+            "evidence_count": 0,
+            "metadata": {
+              "dimensions": [
+                "experimental_treatment",
+                "waiting_period",
+                "coverage_scope",
+                "exclusions",
+                "evidence_sufficiency",
+                "category_limits"
+              ]
+            }
+          },
+          {
+            "agent": "PolicyEvidence",
+            "action": "Retrieved evidence for 6 dimensions",
+            "duration_ms": 7876,
+            "evidence_count": 48,
+            "metadata": {
+              "experimental_treatment": 8,
+              "waiting_period": 8,
+              "coverage_scope": 8,
+              "exclusions": 8,
+              "evidence_sufficiency": 8,
+              "category_limits": 8
+            }
+          },
+          {
+            "agent": "CoverageExclusion",
+            "action": "Assessed 4 dimensions, admissible: False",
+            "duration_ms": 1,
+            "evidence_count": 48,
+            "metadata": {
+              "blocking_issues": [
+                "Experimental treatment exclusion applies",
+                "Treatment excluded by policy exclusions"
+              ]
+            }
+          },
+          {
+            "agent": "Decision",
+            "action": "Decision: NOT_ADMISSIBLE, confidence 0.70",
+            "duration_ms": 0,
+            "evidence_count": 4,
+            "metadata": {
+              "reasoning": "- Experimental treatment exclusion applies\n- Treatment excluded by policy exclusions"
+            }
+          },
+          {
+            "agent": "Validation",
+            "action": "Validation: PASS, 0 unsupported claims",
+            "duration_ms": 0,
+            "evidence_count": 0,
+            "metadata": {
+              "unsupported_claims": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "CUS-001",
+      "predicted_decision": "ADMISSIBLE_WITH_LIMITS",
+      "expected_decision": "ADMISSIBLE_WITH_LIMITS",
+      "correct": true,
+      "confidence": 0.7,
+      "confidence_ok": true,
+      "abstained": false,
+      "evidence_per_dimension": {
+        "waiting_period": 8,
+        "coverage_scope": 8,
+        "exclusions": 8,
+        "evidence_sufficiency": 8,
+        "category_limits": 8
+      },
+      "total_evidence_retrieved": 40,
+      "citation_count": 2,
+      "citation_hit_rate": 1.0,
+      "validation_status": "PASS",
+      "unsupported_claims": [],
+      "missing_evidence": [],
+      "trace": [
+        {
+          "agent": "CaseAnalysis",
+          "action": "Identified 5 investigation dimensions, 2 missing fields",
+          "duration_ms": 0,
+          "evidence_count": 0,
+          "metadata": {
+            "dimensions": [
+              "waiting_period",
+              "coverage_scope",
+              "exclusions",
+              "evidence_sufficiency",
+              "category_limits"
+            ]
+          }
+        },
+        {
+          "agent": "PolicyEvidence",
+          "action": "Retrieved evidence for 5 dimensions",
+          "duration_ms": 8181,
+          "evidence_count": 40,
+          "metadata": {
+            "waiting_period": 8,
+            "coverage_scope": 8,
+            "exclusions": 8,
+            "evidence_sufficiency": 8,
+            "category_limits": 8
+          }
+        },
+        {
+          "agent": "CoverageExclusion",
+          "action": "Assessed 2 dimensions, admissible: True",
+          "duration_ms": 0,
+          "evidence_count": 40,
+          "metadata": {
+            "blocking_issues": []
+          }
+        },
+        {
+          "agent": "Decision",
+          "action": "Decision: ADMISSIBLE_WITH_LIMITS, confidence 0.70",
+          "duration_ms": 0,
+          "evidence_count": 2,
+          "metadata": {
+            "reasoning": "Claim admissible but one or more category sub-limits are exceeded."
+          }
+        },
+        {
+          "agent": "Validation",
+          "action": "Validation: PASS, 0 unsupported claims",
+          "duration_ms": 0,
+          "evidence_count": 0,
+          "metadata": {
+            "unsupported_claims": []
+          }
+        }
+      ],
+      "full_result": {
+        "case_id": "CUS-001",
+        "decision": "ADMISSIBLE_WITH_LIMITS",
+        "confidence": 0.7,
+        "key_findings": [
+          {
+            "finding": "12 months continuous coverage since policy start.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "12 months continuous coverage since policy start.",
+                "source": "policy.pdf",
+                "page": 6,
+                "section": "DEFINITIONS",
+                "chunk_id": "9968227c5c3b"
+              }
+            ]
+          },
+          {
+            "finding": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+                "source": "policy.pdf",
+                "page": 6,
+                "section": "DEFINITIONS",
+                "chunk_id": "9968227c5c3b"
+              }
+            ]
+          }
+        ],
+        "applicable_limits": [],
+        "missing_evidence": [],
+        "citations": [
+          {
+            "claim": "12 months continuous coverage since policy start.",
+            "source": "policy.pdf",
+            "page": 6,
+            "section": "DEFINITIONS",
+            "chunk_id": "9968227c5c3b"
+          },
+          {
+            "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "source": "policy.pdf",
+            "page": 6,
+            "section": "DEFINITIONS",
+            "chunk_id": "9968227c5c3b"
+          }
+        ],
+        "validation": {
+          "status": "PASS",
+          "unsupported_claims": []
+        },
+        "trace": [
+          {
+            "agent": "CaseAnalysis",
+            "action": "Identified 5 investigation dimensions, 2 missing fields",
+            "duration_ms": 0,
+            "evidence_count": 0,
+            "metadata": {
+              "dimensions": [
+                "waiting_period",
+                "coverage_scope",
+                "exclusions",
+                "evidence_sufficiency",
+                "category_limits"
+              ]
+            }
+          },
+          {
+            "agent": "PolicyEvidence",
+            "action": "Retrieved evidence for 5 dimensions",
+            "duration_ms": 8181,
+            "evidence_count": 40,
+            "metadata": {
+              "waiting_period": 8,
+              "coverage_scope": 8,
+              "exclusions": 8,
+              "evidence_sufficiency": 8,
+              "category_limits": 8
+            }
+          },
+          {
+            "agent": "CoverageExclusion",
+            "action": "Assessed 2 dimensions, admissible: True",
+            "duration_ms": 0,
+            "evidence_count": 40,
+            "metadata": {
+              "blocking_issues": []
+            }
+          },
+          {
+            "agent": "Decision",
+            "action": "Decision: ADMISSIBLE_WITH_LIMITS, confidence 0.70",
+            "duration_ms": 0,
+            "evidence_count": 2,
+            "metadata": {
+              "reasoning": "Claim admissible but one or more category sub-limits are exceeded."
+            }
+          },
+          {
+            "agent": "Validation",
+            "action": "Validation: PASS, 0 unsupported claims",
+            "duration_ms": 0,
+            "evidence_count": 0,
+            "metadata": {
+              "unsupported_claims": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "CUS-002",
+      "predicted_decision": "ADMISSIBLE_WITH_LIMITS",
+      "expected_decision": "ADMISSIBLE_WITH_LIMITS",
+      "correct": true,
+      "confidence": 0.7,
+      "confidence_ok": true,
+      "abstained": false,
+      "evidence_per_dimension": {
+        "waiting_period": 8,
+        "coverage_scope": 8,
+        "exclusions": 8,
+        "evidence_sufficiency": 8,
+        "category_limits": 8
+      },
+      "total_evidence_retrieved": 40,
+      "citation_count": 2,
+      "citation_hit_rate": 1.0,
+      "validation_status": "PASS",
+      "unsupported_claims": [],
+      "missing_evidence": [],
+      "trace": [
+        {
+          "agent": "CaseAnalysis",
+          "action": "Identified 5 investigation dimensions, 2 missing fields",
+          "duration_ms": 0,
+          "evidence_count": 0,
+          "metadata": {
+            "dimensions": [
+              "waiting_period",
+              "coverage_scope",
+              "exclusions",
+              "evidence_sufficiency",
+              "category_limits"
+            ]
+          }
+        },
+        {
+          "agent": "PolicyEvidence",
+          "action": "Retrieved evidence for 5 dimensions",
+          "duration_ms": 7264,
+          "evidence_count": 40,
+          "metadata": {
+            "waiting_period": 8,
+            "coverage_scope": 8,
+            "exclusions": 8,
+            "evidence_sufficiency": 8,
+            "category_limits": 8
+          }
+        },
+        {
+          "agent": "CoverageExclusion",
+          "action": "Assessed 2 dimensions, admissible: True",
+          "duration_ms": 0,
+          "evidence_count": 40,
+          "metadata": {
+            "blocking_issues": []
+          }
+        },
+        {
+          "agent": "Decision",
+          "action": "Decision: ADMISSIBLE_WITH_LIMITS, confidence 0.70",
+          "duration_ms": 0,
+          "evidence_count": 2,
+          "metadata": {
+            "reasoning": "Claim admissible but one or more category sub-limits are exceeded."
+          }
+        },
+        {
+          "agent": "Validation",
+          "action": "Validation: PASS, 0 unsupported claims",
+          "duration_ms": 0,
+          "evidence_count": 0,
+          "metadata": {
+            "unsupported_claims": []
+          }
+        }
+      ],
+      "full_result": {
+        "case_id": "CUS-002",
+        "decision": "ADMISSIBLE_WITH_LIMITS",
+        "confidence": 0.7,
+        "key_findings": [
+          {
+            "finding": "12 months continuous coverage since policy start.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "12 months continuous coverage since policy start.",
+                "source": "policy.pdf",
+                "page": 6,
+                "section": "DEFINITIONS",
+                "chunk_id": "9f1b5bf06618"
+              }
+            ]
+          },
+          {
+            "finding": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+                "source": "policy.pdf",
+                "page": 6,
+                "section": "DEFINITIONS",
+                "chunk_id": "9f1b5bf06618"
+              }
+            ]
+          }
+        ],
+        "applicable_limits": [],
+        "missing_evidence": [],
+        "citations": [
+          {
+            "claim": "12 months continuous coverage since policy start.",
+            "source": "policy.pdf",
+            "page": 6,
+            "section": "DEFINITIONS",
+            "chunk_id": "9f1b5bf06618"
+          },
+          {
+            "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "source": "policy.pdf",
+            "page": 6,
+            "section": "DEFINITIONS",
+            "chunk_id": "9f1b5bf06618"
+          }
+        ],
+        "validation": {
+          "status": "PASS",
+          "unsupported_claims": []
+        },
+        "trace": [
+          {
+            "agent": "CaseAnalysis",
+            "action": "Identified 5 investigation dimensions, 2 missing fields",
+            "duration_ms": 0,
+            "evidence_count": 0,
+            "metadata": {
+              "dimensions": [
+                "waiting_period",
+                "coverage_scope",
+                "exclusions",
+                "evidence_sufficiency",
+                "category_limits"
+              ]
+            }
+          },
+          {
+            "agent": "PolicyEvidence",
+            "action": "Retrieved evidence for 5 dimensions",
+            "duration_ms": 7264,
+            "evidence_count": 40,
+            "metadata": {
+              "waiting_period": 8,
+              "coverage_scope": 8,
+              "exclusions": 8,
+              "evidence_sufficiency": 8,
+              "category_limits": 8
+            }
+          },
+          {
+            "agent": "CoverageExclusion",
+            "action": "Assessed 2 dimensions, admissible: True",
+            "duration_ms": 0,
+            "evidence_count": 40,
+            "metadata": {
+              "blocking_issues": []
+            }
+          },
+          {
+            "agent": "Decision",
+            "action": "Decision: ADMISSIBLE_WITH_LIMITS, confidence 0.70",
+            "duration_ms": 0,
+            "evidence_count": 2,
+            "metadata": {
+              "reasoning": "Claim admissible but one or more category sub-limits are exceeded."
+            }
+          },
+          {
+            "agent": "Validation",
+            "action": "Validation: PASS, 0 unsupported claims",
+            "duration_ms": 0,
+            "evidence_count": 0,
+            "metadata": {
+              "unsupported_claims": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "CUS-003",
+      "predicted_decision": "NEEDS_REVIEW",
+      "expected_decision": "NEEDS_REVIEW",
+      "correct": true,
+      "confidence": 0.7,
+      "confidence_ok": true,
+      "abstained": true,
+      "evidence_per_dimension": {
+        "waiting_period": 8,
+        "coverage_scope": 8,
+        "exclusions": 8,
+        "evidence_sufficiency": 8,
+        "category_limits": 8
+      },
+      "total_evidence_retrieved": 40,
+      "citation_count": 2,
+      "citation_hit_rate": 1.0,
+      "validation_status": "PASS",
+      "unsupported_claims": [],
+      "missing_evidence": [
+        "medical necessity confirmation"
+      ],
+      "trace": [
+        {
+          "agent": "CaseAnalysis",
+          "action": "Identified 5 investigation dimensions, 3 missing fields",
+          "duration_ms": 0,
+          "evidence_count": 0,
+          "metadata": {
+            "dimensions": [
+              "waiting_period",
+              "coverage_scope",
+              "exclusions",
+              "evidence_sufficiency",
+              "category_limits"
+            ]
+          }
+        },
+        {
+          "agent": "PolicyEvidence",
+          "action": "Retrieved evidence for 5 dimensions",
+          "duration_ms": 6421,
+          "evidence_count": 40,
+          "metadata": {
+            "waiting_period": 8,
+            "coverage_scope": 8,
+            "exclusions": 8,
+            "evidence_sufficiency": 8,
+            "category_limits": 8
+          }
+        },
+        {
+          "agent": "CoverageExclusion",
+          "action": "Assessed 2 dimensions, admissible: True",
+          "duration_ms": 0,
+          "evidence_count": 40,
+          "metadata": {
+            "blocking_issues": []
+          }
+        },
+        {
+          "agent": "Decision",
+          "action": "Decision: NEEDS_REVIEW, confidence 0.70",
+          "duration_ms": 0,
+          "evidence_count": 2,
+          "metadata": {
+            "reasoning": "Medical necessity not confirmed - insufficient evidence for admission decision."
+          }
+        },
+        {
+          "agent": "Validation",
+          "action": "Validation: PASS, 0 unsupported claims",
+          "duration_ms": 0,
+          "evidence_count": 0,
+          "metadata": {
+            "unsupported_claims": []
+          }
+        }
+      ],
+      "full_result": {
+        "case_id": "CUS-003",
+        "decision": "NEEDS_REVIEW",
+        "confidence": 0.7,
+        "key_findings": [
+          {
+            "finding": "13 months continuous coverage since policy start.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "13 months continuous coverage since policy start.",
+                "source": "policy.pdf",
+                "page": 8,
+                "section": "WHAT WE EXCLUDE",
+                "chunk_id": "10e329d5bff4"
+              }
+            ]
+          },
+          {
+            "finding": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+                "source": "policy.pdf",
+                "page": 8,
+                "section": "WHAT WE EXCLUDE",
+                "chunk_id": "10e329d5bff4"
+              }
+            ]
+          }
+        ],
+        "applicable_limits": [],
+        "missing_evidence": [
+          "medical necessity confirmation"
+        ],
+        "citations": [
+          {
+            "claim": "13 months continuous coverage since policy start.",
+            "source": "policy.pdf",
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "10e329d5bff4"
+          },
+          {
+            "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "source": "policy.pdf",
+            "page": 8,
+            "section": "WHAT WE EXCLUDE",
+            "chunk_id": "10e329d5bff4"
+          }
+        ],
+        "validation": {
+          "status": "PASS",
+          "unsupported_claims": []
+        },
+        "trace": [
+          {
+            "agent": "CaseAnalysis",
+            "action": "Identified 5 investigation dimensions, 3 missing fields",
+            "duration_ms": 0,
+            "evidence_count": 0,
+            "metadata": {
+              "dimensions": [
+                "waiting_period",
+                "coverage_scope",
+                "exclusions",
+                "evidence_sufficiency",
+                "category_limits"
+              ]
+            }
+          },
+          {
+            "agent": "PolicyEvidence",
+            "action": "Retrieved evidence for 5 dimensions",
+            "duration_ms": 6421,
+            "evidence_count": 40,
+            "metadata": {
+              "waiting_period": 8,
+              "coverage_scope": 8,
+              "exclusions": 8,
+              "evidence_sufficiency": 8,
+              "category_limits": 8
+            }
+          },
+          {
+            "agent": "CoverageExclusion",
+            "action": "Assessed 2 dimensions, admissible: True",
+            "duration_ms": 0,
+            "evidence_count": 40,
+            "metadata": {
+              "blocking_issues": []
+            }
+          },
+          {
+            "agent": "Decision",
+            "action": "Decision: NEEDS_REVIEW, confidence 0.70",
+            "duration_ms": 0,
+            "evidence_count": 2,
+            "metadata": {
+              "reasoning": "Medical necessity not confirmed - insufficient evidence for admission decision."
+            }
+          },
+          {
+            "agent": "Validation",
+            "action": "Validation: PASS, 0 unsupported claims",
+            "duration_ms": 0,
+            "evidence_count": 0,
+            "metadata": {
+              "unsupported_claims": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "CUS-004",
+      "predicted_decision": "NOT_ADMISSIBLE",
+      "expected_decision": "NOT_ADMISSIBLE",
+      "correct": true,
+      "confidence": 0.7,
+      "confidence_ok": true,
+      "abstained": false,
+      "evidence_per_dimension": {
+        "day_care_qualification": 8,
+        "waiting_period": 8,
+        "coverage_scope": 8,
+        "exclusions": 8,
+        "evidence_sufficiency": 8,
+        "category_limits": 8
+      },
+      "total_evidence_retrieved": 48,
+      "citation_count": 3,
+      "citation_hit_rate": 1.0,
+      "validation_status": "PASS",
+      "unsupported_claims": [],
+      "missing_evidence": [],
+      "trace": [
+        {
+          "agent": "CaseAnalysis",
+          "action": "Identified 6 investigation dimensions, 2 missing fields",
+          "duration_ms": 0,
+          "evidence_count": 0,
+          "metadata": {
+            "dimensions": [
+              "day_care_qualification",
+              "waiting_period",
+              "coverage_scope",
+              "exclusions",
+              "evidence_sufficiency",
+              "category_limits"
+            ]
+          }
+        },
+        {
+          "agent": "PolicyEvidence",
+          "action": "Retrieved evidence for 6 dimensions",
+          "duration_ms": 7042,
+          "evidence_count": 48,
+          "metadata": {
+            "day_care_qualification": 8,
+            "waiting_period": 8,
+            "coverage_scope": 8,
+            "exclusions": 8,
+            "evidence_sufficiency": 8,
+            "category_limits": 8
+          }
+        },
+        {
+          "agent": "CoverageExclusion",
+          "action": "Assessed 3 dimensions, admissible: True",
+          "duration_ms": 1,
+          "evidence_count": 48,
+          "metadata": {
+            "blocking_issues": []
+          }
+        },
+        {
+          "agent": "Decision",
+          "action": "Decision: NOT_ADMISSIBLE, confidence 0.70",
+          "duration_ms": 0,
+          "evidence_count": 3,
+          "metadata": {
+            "reasoning": "Treatment excluded by policy (experimental/cosmetic/dental)."
+          }
+        },
+        {
+          "agent": "Validation",
+          "action": "Validation: PASS, 0 unsupported claims",
+          "duration_ms": 0,
+          "evidence_count": 0,
+          "metadata": {
+            "unsupported_claims": []
+          }
+        }
+      ],
+      "full_result": {
+        "case_id": "CUS-004",
+        "decision": "NOT_ADMISSIBLE",
+        "confidence": 0.7,
+        "key_findings": [
+          {
+            "finding": "14 months continuous coverage since policy start.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "14 months continuous coverage since policy start.",
+                "source": "policy.pdf",
+                "page": 2,
+                "section": "DEFINITIONS",
+                "chunk_id": "09b304f7c718"
+              }
+            ]
+          },
+          {
+            "finding": "Day care treatment with 6 hours admission qualifies under policy.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "Day care treatment with 6 hours admission qualifies under policy.",
+                "source": "policy.pdf",
+                "page": 2,
+                "section": "DEFINITIONS",
+                "chunk_id": "09b304f7c718"
+              }
+            ]
+          },
+          {
+            "finding": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+                "source": "policy.pdf",
+                "page": 2,
+                "section": "DEFINITIONS",
+                "chunk_id": "a3fc1879a3b5"
+              }
+            ]
+          }
+        ],
+        "applicable_limits": [],
+        "missing_evidence": [],
+        "citations": [
+          {
+            "claim": "14 months continuous coverage since policy start.",
+            "source": "policy.pdf",
+            "page": 2,
+            "section": "DEFINITIONS",
+            "chunk_id": "09b304f7c718"
+          },
+          {
+            "claim": "Day care treatment with 6 hours admission qualifies under policy.",
+            "source": "policy.pdf",
+            "page": 2,
+            "section": "DEFINITIONS",
+            "chunk_id": "09b304f7c718"
+          },
+          {
+            "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "source": "policy.pdf",
+            "page": 2,
+            "section": "DEFINITIONS",
+            "chunk_id": "a3fc1879a3b5"
+          }
+        ],
+        "validation": {
+          "status": "PASS",
+          "unsupported_claims": []
+        },
+        "trace": [
+          {
+            "agent": "CaseAnalysis",
+            "action": "Identified 6 investigation dimensions, 2 missing fields",
+            "duration_ms": 0,
+            "evidence_count": 0,
+            "metadata": {
+              "dimensions": [
+                "day_care_qualification",
+                "waiting_period",
+                "coverage_scope",
+                "exclusions",
+                "evidence_sufficiency",
+                "category_limits"
+              ]
+            }
+          },
+          {
+            "agent": "PolicyEvidence",
+            "action": "Retrieved evidence for 6 dimensions",
+            "duration_ms": 7042,
+            "evidence_count": 48,
+            "metadata": {
+              "day_care_qualification": 8,
+              "waiting_period": 8,
+              "coverage_scope": 8,
+              "exclusions": 8,
+              "evidence_sufficiency": 8,
+              "category_limits": 8
+            }
+          },
+          {
+            "agent": "CoverageExclusion",
+            "action": "Assessed 3 dimensions, admissible: True",
+            "duration_ms": 1,
+            "evidence_count": 48,
+            "metadata": {
+              "blocking_issues": []
+            }
+          },
+          {
+            "agent": "Decision",
+            "action": "Decision: NOT_ADMISSIBLE, confidence 0.70",
+            "duration_ms": 0,
+            "evidence_count": 3,
+            "metadata": {
+              "reasoning": "Treatment excluded by policy (experimental/cosmetic/dental)."
+            }
+          },
+          {
+            "agent": "Validation",
+            "action": "Validation: PASS, 0 unsupported claims",
+            "duration_ms": 0,
+            "evidence_count": 0,
+            "metadata": {
+              "unsupported_claims": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "CUS-005",
+      "predicted_decision": "ADMISSIBLE_WITH_LIMITS",
+      "expected_decision": "ADMISSIBLE_WITH_LIMITS",
+      "correct": true,
+      "confidence": 0.7,
+      "confidence_ok": true,
+      "abstained": false,
+      "evidence_per_dimension": {
+        "domiciliary_conditions": 8,
+        "waiting_period": 8,
+        "coverage_scope": 8,
+        "exclusions": 8,
+        "evidence_sufficiency": 8,
+        "category_limits": 8
+      },
+      "total_evidence_retrieved": 48,
+      "citation_count": 3,
+      "citation_hit_rate": 1.0,
+      "validation_status": "PASS",
+      "unsupported_claims": [],
+      "missing_evidence": [],
+      "trace": [
+        {
+          "agent": "CaseAnalysis",
+          "action": "Identified 6 investigation dimensions, 1 missing fields",
+          "duration_ms": 0,
+          "evidence_count": 0,
+          "metadata": {
+            "dimensions": [
+              "domiciliary_conditions",
+              "waiting_period",
+              "coverage_scope",
+              "exclusions",
+              "evidence_sufficiency",
+              "category_limits"
+            ]
+          }
+        },
+        {
+          "agent": "PolicyEvidence",
+          "action": "Retrieved evidence for 6 dimensions",
+          "duration_ms": 6943,
+          "evidence_count": 48,
+          "metadata": {
+            "domiciliary_conditions": 8,
+            "waiting_period": 8,
+            "coverage_scope": 8,
+            "exclusions": 8,
+            "evidence_sufficiency": 8,
+            "category_limits": 8
+          }
+        },
+        {
+          "agent": "CoverageExclusion",
+          "action": "Assessed 3 dimensions, admissible: True",
+          "duration_ms": 2,
+          "evidence_count": 48,
+          "metadata": {
+            "blocking_issues": []
+          }
+        },
+        {
+          "agent": "Decision",
+          "action": "Decision: ADMISSIBLE_WITH_LIMITS, confidence 0.70",
+          "duration_ms": 0,
+          "evidence_count": 3,
+          "metadata": {
+            "reasoning": "Domiciliary treatment admissible subject to 20% SI sub-limit."
+          }
+        },
+        {
+          "agent": "Validation",
+          "action": "Validation: PASS, 0 unsupported claims",
+          "duration_ms": 0,
+          "evidence_count": 0,
+          "metadata": {
+            "unsupported_claims": []
+          }
+        }
+      ],
+      "full_result": {
+        "case_id": "CUS-005",
+        "decision": "ADMISSIBLE_WITH_LIMITS",
+        "confidence": 0.7,
+        "key_findings": [
+          {
+            "finding": "15 months continuous coverage since policy start.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "15 months continuous coverage since policy start.",
+                "source": "policy.pdf",
+                "page": 2,
+                "section": "DEFINITIONS",
+                "chunk_id": "c8699d2e4460"
+              }
+            ]
+          },
+          {
+            "finding": "Domiciliary conditions: room unavailable=True, patient cannot be moved=True. Policy requires both to be satisfied.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "Domiciliary conditions: room unavailable=True, patient cannot be moved=True. Policy requires both to be satisfied.",
+                "source": "policy.pdf",
+                "page": 2,
+                "section": "DEFINITIONS",
+                "chunk_id": "c8699d2e4460"
+              }
+            ]
+          },
+          {
+            "finding": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "supported": true,
+            "citations": [
+              {
+                "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+                "source": "policy.pdf",
+                "page": 2,
+                "section": "DEFINITIONS",
+                "chunk_id": "c8699d2e4460"
+              }
+            ]
+          }
+        ],
+        "applicable_limits": [],
+        "missing_evidence": [],
+        "citations": [
+          {
+            "claim": "15 months continuous coverage since policy start.",
+            "source": "policy.pdf",
+            "page": 2,
+            "section": "DEFINITIONS",
+            "chunk_id": "c8699d2e4460"
+          },
+          {
+            "claim": "Domiciliary conditions: room unavailable=True, patient cannot be moved=True. Policy requires both to be satisfied.",
+            "source": "policy.pdf",
+            "page": 2,
+            "section": "DEFINITIONS",
+            "chunk_id": "c8699d2e4460"
+          },
+          {
+            "claim": "Category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, medicines 40% SI.",
+            "source": "policy.pdf",
+            "page": 2,
+            "section": "DEFINITIONS",
+            "chunk_id": "c8699d2e4460"
+          }
+        ],
+        "validation": {
+          "status": "PASS",
+          "unsupported_claims": []
+        },
+        "trace": [
+          {
+            "agent": "CaseAnalysis",
+            "action": "Identified 6 investigation dimensions, 1 missing fields",
+            "duration_ms": 0,
+            "evidence_count": 0,
+            "metadata": {
+              "dimensions": [
+                "domiciliary_conditions",
+                "waiting_period",
+                "coverage_scope",
+                "exclusions",
+                "evidence_sufficiency",
+                "category_limits"
+              ]
+            }
+          },
+          {
+            "agent": "PolicyEvidence",
+            "action": "Retrieved evidence for 6 dimensions",
+            "duration_ms": 6943,
+            "evidence_count": 48,
+            "metadata": {
+              "domiciliary_conditions": 8,
+              "waiting_period": 8,
+              "coverage_scope": 8,
+              "exclusions": 8,
+              "evidence_sufficiency": 8,
+              "category_limits": 8
+            }
+          },
+          {
+            "agent": "CoverageExclusion",
+            "action": "Assessed 3 dimensions, admissible: True",
+            "duration_ms": 2,
+            "evidence_count": 48,
+            "metadata": {
+              "blocking_issues": []
+            }
+          },
+          {
+            "agent": "Decision",
+            "action": "Decision: ADMISSIBLE_WITH_LIMITS, confidence 0.70",
+            "duration_ms": 0,
+            "evidence_count": 3,
+            "metadata": {
+              "reasoning": "Domiciliary treatment admissible subject to 20% SI sub-limit."
+            }
+          },
+          {
+            "agent": "Validation",
+            "action": "Validation: PASS, 0 unsupported claims",
+            "duration_ms": 0,
+            "evidence_count": 0,
+            "metadata": {
+              "unsupported_claims": []
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

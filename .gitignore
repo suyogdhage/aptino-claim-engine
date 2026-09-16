@@ -21,8 +21,9 @@ chroma_db/
 *.pkl
 *.sqlite3
 
-# Evaluation output
-evaluation_results/
+# Evaluation output (keep report for reviewers)
+evaluation_results/*
+!evaluation_results/evaluation_report.json
 uvicorn_*.log
 streamlit_*.log
 eval_run.*
