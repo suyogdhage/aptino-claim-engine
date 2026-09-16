@@ -72,16 +72,20 @@ Log "Tunnel health: $($h2.status)"
 # 5. Update Render UI env var + redeploy
 if ($RenderToken) {
     try {
-        curl.exe -s -X PUT "https://api.render.com/v1/services/$UiServiceId/env-vars" `
-            -H "Authorization: Bearer $RenderToken" -H "Content-Type: application/json" `
-            -d "[{\"key\":\"API_BASE_URL\",\"value\":\"$tunnelUrl\"}]" | Out-Null
-        Log "Render env var updated"
-        $dep = curl.exe -s -X POST "https://api.render.com/v1/services/$UiServiceId/deploys" `
-            -H "Authorization: Bearer $RenderToken" -H "Content-Type: application/json" -d '{}' | ConvertFrom-Json
-        Log "Render redeploy triggered: $($dep.id) ($($dep.status))"
+        $envBody = [System.Text.Encoding]::UTF8.GetBytes("[{`"key`":`"API_BASE_URL`",`"value`":`"$tunnelUrl`"}]")
+        $r1 = Invoke-WebRequest -Uri "https://api.render.com/v1/services/$UiServiceId/env-vars" -Method Put `
+            -Headers @{"Authorization"="Bearer $RenderToken"} -Body $envBody -ContentType "application/json" -UseBasicParsing
+        Log "Render env var updated: HTTP $($r1.StatusCode)"
+        $depPayload = [System.Text.Encoding]::UTF8.GetBytes('{}')
+        $r2 = Invoke-WebRequest -Uri "https://api.render.com/v1/services/$UiServiceId/deploys" -Method Post `
+            -Headers @{"Authorization"="Bearer $RenderToken"} -Body $depPayload -ContentType "application/json" -UseBasicParsing
+        Log "Render redeploy triggered: $(($r2.Content | ConvertFrom-Json).id)"
     } catch {
         Log "NOTE: could not update Render env var - set API_BASE_URL=$tunnelUrl manually in the Render dashboard."
     }
+} else {
+    Log "No RenderToken - do NOT forget to set API_BASE_URL=$tunnelUrl manually in the Render dashboard (Service > Environment > Values and redeploy)."
+}
 } else {
     Log "No RenderToken - do NOT forget to set API_BASE_URL=$tunnelUrl in the Render dashboard (Service > Environment > Values and redeploy)."
 }
