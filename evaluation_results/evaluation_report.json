@@ -1,5 +1,6 @@
 {
   "summary": {
+    "llm_mode": "mock",
     "total_cases": 17,
     "skipped_cases": [],
     "correct_decisions": 17,
@@ -115,7 +116,7 @@
         {
           "agent": "CaseAnalysis",
           "action": "Identified 5 investigation dimensions, 2 missing fields",
-          "duration_ms": 7,
+          "duration_ms": 9,
           "evidence_count": 0,
           "metadata": {
             "dimensions": [
@@ -130,7 +131,7 @@
         {
           "agent": "PolicyEvidence",
           "action": "Retrieved evidence for 5 dimensions",
-          "duration_ms": 22146,
+          "duration_ms": 19417,
           "evidence_count": 40,
           "metadata": {
             "counts": {
@@ -187,7 +188,7 @@
         {
           "agent": "CoverageExclusion",
           "action": "Assessed 2 dimensions, admissible: True",
-          "duration_ms": 1,
+          "duration_ms": 0,
           "evidence_count": 40,
           "metadata": {
             "blocking_issues": []
@@ -196,7 +197,7 @@
         {
           "agent": "Decision",
           "action": "Decision: ADMISSIBLE_WITH_LIMITS, confidence 0.70",
-          "duration_ms": 3,
+          "duration_ms": 1,
           "evidence_count": 2,
           "metadata": {
             "reasoning": "Claim admissible but one or more category sub-limits are exceeded."
@@ -270,7 +271,7 @@
           {
             "agent": "CaseAnalysis",
             "action": "Identified 5 investigation dimensions, 2 missing fields",
-            "duration_ms": 7,
+            "duration_ms": 9,
             "evidence_count": 0,
             "metadata": {
               "dimensions": [
@@ -285,7 +286,7 @@
           {
             "agent": "PolicyEvidence",
             "action": "Retrieved evidence for 5 dimensions",
-            "duration_ms": 22146,
+            "duration_ms": 19417,
             "evidence_count": 40,
             "metadata": {
               "counts": {
@@ -342,7 +343,7 @@
           {
             "agent": "CoverageExclusion",
             "action": "Assessed 2 dimensions, admissible: True",
-            "duration_ms": 1,
+            "duration_ms": 0,
             "evidence_count": 40,
             "metadata": {
               "blocking_issues": []
@@ -351,7 +352,7 @@
           {
             "agent": "Decision",
             "action": "Decision: ADMISSIBLE_WITH_LIMITS, confidence 0.70",
-            "duration_ms": 3,
+            "duration_ms": 1,
             "evidence_count": 2,
             "metadata": {
               "reasoning": "Claim admissible but one or more category sub-limits are exceeded."
@@ -446,7 +447,7 @@
         {
           "agent": "CaseAnalysis",
           "action": "Identified 5 investigation dimensions, 2 missing fields",
-          "duration_ms": 4,
+          "duration_ms": 0,
           "evidence_count": 0,
           "metadata": {
             "dimensions": [
@@ -461,7 +462,7 @@
         {
           "agent": "PolicyEvidence",
           "action": "Retrieved evidence for 5 dimensions",
-          "duration_ms": 3967,
+          "duration_ms": 4015,
           "evidence_count": 40,
           "metadata": {
             "counts": {
@@ -601,7 +602,7 @@
           {
             "agent": "CaseAnalysis",
             "action": "Identified 5 investigation dimensions, 2 missing fields",
-            "duration_ms": 4,
+            "duration_ms": 0,
             "evidence_count": 0,
             "metadata": {
               "dimensions": [
@@ -616,7 +617,7 @@
           {
             "agent": "PolicyEvidence",
             "action": "Retrieved evidence for 5 dimensions",
-            "duration_ms": 3967,
+            "duration_ms": 4015,
             "evidence_count": 40,
             "metadata": {
               "counts": {
@@ -802,7 +803,7 @@
         {
           "agent": "PolicyEvidence",
           "action": "Retrieved evidence for 6 dimensions",
-          "duration_ms": 5521,
+          "duration_ms": 5555,
           "evidence_count": 48,
           "metadata": {
             "counts": {
@@ -989,7 +990,7 @@
           {
             "agent": "PolicyEvidence",
             "action": "Retrieved evidence for 6 dimensions",
-            "duration_ms": 5521,
+            "duration_ms": 5555,
             "evidence_count": 48,
             "metadata": {
               "counts": {
@@ -1186,7 +1187,7 @@
         {
           "agent": "PolicyEvidence",
           "action": "Retrieved evidence for 6 dimensions",
-          "duration_ms": 5485,
+          "duration_ms": 5529,
           "evidence_count": 48,
           "metadata": {
             "counts": {
@@ -1373,7 +1374,7 @@
           {
             "agent": "PolicyEvidence",
             "action": "Retrieved evidence for 6 dimensions",
-            "duration_ms": 5485,
+            "duration_ms": 5529,
             "evidence_count": 48,
             "metadata": {
               "counts": {
@@ -1570,7 +1571,7 @@
         {
           "agent": "PolicyEvidence",
           "action": "Retrieved evidence for 6 dimensions",
-          "duration_ms": 6599,
+          "duration_ms": 7227,
           "evidence_count": 48,
           "metadata": {
             "counts": {
@@ -1755,7 +1756,7 @@
           {
             "agent": "PolicyEvidence",
             "action": "Retrieved evidence for 6 dimensions",
-            "duration_ms": 6599,
+            "duration_ms": 7227,
             "evidence_count": 48,
             "metadata": {
               "counts": {
@@ -1942,7 +1943,7 @@
         {
           "agent": "PolicyEvidence",
           "action": "Retrieved evidence for 5 dimensions",
-          "duration_ms": 5524,
+          "duration_ms": 5249,
           "evidence_count": 40,
           "metadata": {
             "counts": {
@@ -1999,7 +2000,7 @@
         {
           "agent": "CoverageExclusion",
           "action": "Assessed 2 dimensions, admissible: True",
-          "duration_ms": 1,
+          "duration_ms": 0,
           "evidence_count": 40,
           "metadata": {
             "blocking_issues": []
@@ -2099,7 +2100,7 @@
           {
             "agent": "PolicyEvidence",
             "action": "Retrieved evidence for 5 dimensions",
-            "duration_ms": 5524,
+            "duration_ms": 5249,
             "evidence_count": 40,
             "metadata": {
               "counts": {
@@ -2156,7 +2157,7 @@
           {
             "agent": "CoverageExclusion",
             "action": "Assessed 2 dimensions, admissible: True",
-            "duration_ms": 1,
+            "duration_ms": 0,
             "evidence_count": 40,
             "metadata": {
               "blocking_issues": []
@@ -2275,7 +2276,7 @@
         {
           "agent": "PolicyEvidence",
           "action": "Retrieved evidence for 5 dimensions",
-          "duration_ms": 5612,
+          "duration_ms": 5273,
           "evidence_count": 40,
           "metadata": {
             "counts": {
@@ -2430,7 +2431,7 @@
           {
             "agent": "PolicyEvidence",
             "action": "Retrieved evidence for 5 dimensions",
-            "duration_ms": 5612,
+            "duration_ms": 5273,
             "evidence_count": 40,
             "metadata": {
               "counts": {
@@ -2606,7 +2607,7 @@
         {
           "agent": "PolicyEvidence",
           "action": "Retrieved evidence for 5 dimensions",
-          "duration_ms": 5572,
+          "duration_ms": 5360,
           "evidence_count": 40,
           "metadata": {
             "counts": {
@@ -2783,7 +2784,7 @@
           {
             "agent": "PolicyEvidence",
             "action": "Retrieved evidence for 5 dimensions",
-            "duration_ms": 5572,
+            "duration_ms": 5360,
             "evidence_count": 40,
             "metadata": {
               "counts": {
@@ -2971,7 +2972,7 @@
         {
           "agent": "PolicyEvidence",
           "action": "Retrieved evidence for 6 dimensions",
-          "duration_ms": 6722,
+          "duration_ms": 6577,
           "evidence_count": 48,
           "metadata": {
             "counts": {
@@ -3136,7 +3137,7 @@
           {
             "agent": "PolicyEvidence",
             "action": "Retrieved evidence for 6 dimensions",
-            "duration_ms": 6722,
+            "duration_ms": 6577,
             "evidence_count": 48,
             "metadata": {
               "counts": {
@@ -3342,7 +3343,7 @@
         {
           "agent": "PolicyEvidence",
           "action": "Retrieved evidence for 7 dimensions",
-          "duration_ms": 7725,
+          "duration_ms": 7982,
           "evidence_count": 56,
           "metadata": {
             "counts": {
@@ -3417,7 +3418,7 @@
         {
           "agent": "CoverageExclusion",
           "action": "Assessed 3 dimensions, admissible: True",
-          "duration_ms": 0,
+          "duration_ms": 1,
           "evidence_count": 56,
           "metadata": {
             "blocking_issues": []
@@ -3426,7 +3427,7 @@
         {
           "agent": "Decision",
           "action": "Decision: ADMISSIBLE, confidence 0.70",
-          "duration_ms": 1,
+          "duration_ms": 0,
           "evidence_count": 3,
           "metadata": {
             "reasoning": "Claim admissible with no material limit exceeded."
@@ -3537,7 +3538,7 @@
           {
             "agent": "PolicyEvidence",
             "action": "Retrieved evidence for 7 dimensions",
-            "duration_ms": 7725,
+            "duration_ms": 7982,
             "evidence_count": 56,
             "metadata": {
               "counts": {
@@ -3612,7 +3613,7 @@
           {
             "agent": "CoverageExclusion",
             "action": "Assessed 3 dimensions, admissible: True",
-            "duration_ms": 0,
+            "duration_ms": 1,
             "evidence_count": 56,
             "metadata": {
               "blocking_issues": []
@@ -3621,7 +3622,7 @@
           {
             "agent": "Decision",
             "action": "Decision: ADMISSIBLE, confidence 0.70",
-            "duration_ms": 1,
+            "duration_ms": 0,
             "evidence_count": 3,
             "metadata": {
               "reasoning": "Claim admissible with no material limit exceeded."
@@ -3743,7 +3744,7 @@
         {
           "agent": "PolicyEvidence",
           "action": "Retrieved evidence for 6 dimensions",
-          "duration_ms": 6826,
+          "duration_ms": 6689,
           "evidence_count": 48,
           "metadata": {
             "counts": {
@@ -3910,7 +3911,7 @@
           {
             "agent": "PolicyEvidence",
             "action": "Retrieved evidence for 6 dimensions",
-            "duration_ms": 6826,
+            "duration_ms": 6689,
             "evidence_count": 48,
             "metadata": {
               "counts": {
@@ -4106,7 +4107,7 @@
         {
           "agent": "PolicyEvidence",
           "action": "Retrieved evidence for 6 dimensions",
-          "duration_ms": 5918,
+          "duration_ms": 5931,
           "evidence_count": 48,
           "metadata": {
             "counts": {
@@ -4314,7 +4315,7 @@
           {
             "agent": "PolicyEvidence",
             "action": "Retrieved evidence for 6 dimensions",
-            "duration_ms": 5918,
+            "duration_ms": 5931,
             "evidence_count": 48,
             "metadata": {
               "counts": {
@@ -4502,7 +4503,7 @@
         {
           "agent": "PolicyEvidence",
           "action": "Retrieved evidence for 5 dimensions",
-          "duration_ms": 5686,
+          "duration_ms": 5719,
           "evidence_count": 40,
           "metadata": {
             "counts": {
@@ -4657,7 +4658,7 @@
           {
             "agent": "PolicyEvidence",
             "action": "Retrieved evidence for 5 dimensions",
-            "duration_ms": 5686,
+            "duration_ms": 5719,
             "evidence_count": 40,
             "metadata": {
               "counts": {
@@ -4833,7 +4834,7 @@
         {
           "agent": "PolicyEvidence",
           "action": "Retrieved evidence for 5 dimensions",
-          "duration_ms": 5743,
+          "duration_ms": 5710,
           "evidence_count": 40,
           "metadata": {
             "counts": {
@@ -4988,7 +4989,7 @@
           {
             "agent": "PolicyEvidence",
             "action": "Retrieved evidence for 5 dimensions",
-            "duration_ms": 5743,
+            "duration_ms": 5710,
             "evidence_count": 40,
             "metadata": {
               "counts": {
@@ -5166,7 +5167,7 @@
         {
           "agent": "PolicyEvidence",
           "action": "Retrieved evidence for 5 dimensions",
-          "duration_ms": 5867,
+          "duration_ms": 5790,
           "evidence_count": 40,
           "metadata": {
             "counts": {
@@ -5323,7 +5324,7 @@
           {
             "agent": "PolicyEvidence",
             "action": "Retrieved evidence for 5 dimensions",
-            "duration_ms": 5867,
+            "duration_ms": 5790,
             "evidence_count": 40,
             "metadata": {
               "counts": {
@@ -5509,7 +5510,7 @@
         {
           "agent": "PolicyEvidence",
           "action": "Retrieved evidence for 6 dimensions",
-          "duration_ms": 6622,
+          "duration_ms": 6797,
           "evidence_count": 48,
           "metadata": {
             "counts": {
@@ -5694,7 +5695,7 @@
           {
             "agent": "PolicyEvidence",
             "action": "Retrieved evidence for 6 dimensions",
-            "duration_ms": 6622,
+            "duration_ms": 6797,
             "evidence_count": 48,
             "metadata": {
               "counts": {
@@ -5889,7 +5890,7 @@
         {
           "agent": "PolicyEvidence",
           "action": "Retrieved evidence for 6 dimensions",
-          "duration_ms": 5588,
+          "duration_ms": 5802,
           "evidence_count": 48,
           "metadata": {
             "counts": {
@@ -5955,7 +5956,7 @@
         {
           "agent": "CoverageExclusion",
           "action": "Assessed 3 dimensions, admissible: True",
-          "duration_ms": 0,
+          "duration_ms": 1,
           "evidence_count": 48,
           "metadata": {
             "blocking_issues": []
@@ -5964,7 +5965,7 @@
         {
           "agent": "Decision",
           "action": "Decision: ADMISSIBLE_WITH_LIMITS, confidence 0.70",
-          "duration_ms": 0,
+          "duration_ms": 1,
           "evidence_count": 3,
           "metadata": {
             "reasoning": "Domiciliary treatment admissible subject to 20% SI sub-limit."
@@ -6074,7 +6075,7 @@
           {
             "agent": "PolicyEvidence",
             "action": "Retrieved evidence for 6 dimensions",
-            "duration_ms": 5588,
+            "duration_ms": 5802,
             "evidence_count": 48,
             "metadata": {
               "counts": {
@@ -6140,7 +6141,7 @@
           {
             "agent": "CoverageExclusion",
             "action": "Assessed 3 dimensions, admissible: True",
-            "duration_ms": 0,
+            "duration_ms": 1,
             "evidence_count": 48,
             "metadata": {
               "blocking_issues": []
@@ -6149,7 +6150,7 @@
           {
             "agent": "Decision",
             "action": "Decision: ADMISSIBLE_WITH_LIMITS, confidence 0.70",
-            "duration_ms": 0,
+            "duration_ms": 1,
             "evidence_count": 3,
             "metadata": {
               "reasoning": "Domiciliary treatment admissible subject to 20% SI sub-limit."

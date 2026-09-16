@@ -112,7 +112,7 @@ Example response:
 python -m app.evaluation.evaluate
 ```
 
-Runs all public + custom cases, compares against `app/evaluation/expected_outcomes.json`, and writes `evaluation_results/evaluation_report.json` with decision accuracy, abstention, and citation metrics.
+Runs all public + custom cases, compares against `app/evaluation/expected_outcomes.json`, and writes `evaluation_results/evaluation_report.json` with decision accuracy, abstention, retrieval recall@k (against `app/evaluation/gold_evidence.json` page references), and citation precision.
 
 For the same gate used by CI:
 
@@ -121,6 +121,26 @@ $env:FORCE_MOCK_LLM='true'
 python -m app.evaluation.evaluate
 python -m app.evaluation.check_release
 ```
+
+### Evaluation results (deterministic mock mode, 17 cases)
+
+| Metric | Value |
+| --- | --- |
+| Accuracy | 1.0 (12/12 public, 5/5 custom) |
+| Abstention rate | 0.176 (3 needed review, all correct) |
+| Citation coverage | 1.0 |
+| Citation precision | 0.314 |
+| Retrieval recall@1 | 0.265 |
+| Retrieval recall@2 | 0.5 |
+| Retrieval recall@4 | 0.588 |
+| Retrieval recall@8 | 0.882 |
+
+The release gate (`app/evaluation/check_release.py`) is mode-aware: the
+deterministic mock run must score 1.0 accuracy with full citation coverage and
+`retrieval_recall_at_8 >= 0.8`, while a real Groq run must reach an 0.85 accuracy
+floor with recall@8 >= 0.8. Refreshing the real-Groq row of this table requires
+a run with `FORCE_MOCK_LLM` unset, which is blocked while the Groq token
+rate-limit quota is exhausted.
 
 ## Error responses
 

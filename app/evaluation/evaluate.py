@@ -11,6 +11,10 @@ from app.config import settings
 from app.evaluation.expected import EXPECTED_OUTCOMES_FILE, GOLD_EVIDENCE_FILE, ExpectedOutcome, GoldEvidence
 
 
+def llm_mode() -> str:
+    return "mock" if bool(settings.FORCE_MOCK_LLM) else "groq"
+
+
 def load_cases(path: str) -> List[dict]:
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
@@ -193,6 +197,7 @@ def run_evaluation(data_dir: str = "./data") -> dict:
     citation_precision_avg = round(sum(cite_precisions) / max(len(cite_precisions), 1), 3) if cite_precisions else 0.0
 
     summary = {
+        "llm_mode": llm_mode(),
         "total_cases": total,
         "skipped_cases": [r["case_id"] for r in all_results if r.get("skipped", False)],
         "correct_decisions": correct,
