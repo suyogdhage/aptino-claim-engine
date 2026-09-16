@@ -8,7 +8,7 @@ from pydantic import ValidationError
 from app.models.claim import ClaimCase, DecisionResponse
 from app.graph.workflow import ClaimEngine
 from app.config import settings
-from app.evaluation.expected import EXPECTED_OUTCOMES_FILE, ExpectedOutcome
+from app.evaluation.expected import EXPECTED_OUTCOMES_FILE, GOLD_EVIDENCE_FILE, ExpectedOutcome, GoldEvidence
 
 
 def load_cases(path: str) -> List[dict]:
@@ -20,7 +20,35 @@ def normalize_decision(d: str) -> str:
     return d.upper().strip()
 
 
-def evaluate_single(engine: ClaimEngine, case_data: dict, expected: ExpectedOutcome) -> dict:
+def recall_at_k(retrieved_pages: List[int], gold_pages: List[int], k_values: List[int]) -> Dict[int, float]:
+    """Fraction of gold pages covered among the top-k retrieved pages."""
+    gold = set(gold_pages)
+    if not gold:
+        return {}
+    result = {}
+    for k in sorted(k_values):
+        top_k = set(retrieved_pages[:k])
+        result[k] = round(len(top_k & gold) / len(gold), 3)
+    return result
+
+
+def citation_precision(citations: List, gold_pages: List[int]) -> float:
+    """Fraction of cited pages that are among the gold pages for the case."""
+    gold = set(gold_pages)
+    if not citations:
+        return 0.0
+    if not gold:
+        return 0.0
+    correct = sum(1 for c in citations if c.page in gold)
+    return round(correct / len(citations), 3)
+
+
+def evaluate_single(
+    engine: ClaimEngine,
+    case_data: dict,
+    expected: ExpectedOutcome,
+    gold: Optional[GoldEvidence] = None,
+) -> dict:
     case_id = case_data.get("case_id", "UNKNOWN")
     result: DecisionResponse = engine.analyze(ClaimCase(**case_data))
 
@@ -33,14 +61,19 @@ def evaluate_single(engine: ClaimEngine, case_data: dict, expected: ExpectedOutc
 
     # Retrieval metrics from trace
     retrieval_counts = {}
+    retrieved_pages: List[int] = []
     for t in result.trace:
         if t.agent == "PolicyEvidence":
-            retrieval_counts = t.metadata if isinstance(t.metadata, dict) else {}
+            metadata = t.metadata if isinstance(t.metadata, dict) else {}
+            retrieval_counts = metadata.get("counts", metadata)
+            retrieved_pages = metadata.get("retrieved_pages", [])
 
     total_evidence = sum(retrieval_counts.values()) if retrieval_counts else 0
 
     citation_count = len(result.citations)
-    citation_hit_rate = 1.0 if citation_count > 0 else 0.0
+    gold_pages = gold.gold_pages if gold else []
+    retrieval_recall_at_k = recall_at_k(retrieved_pages, gold_pages, [1, 2, 4, 8])
+    citation_hit_rate = citation_precision(result.citations, gold_pages)
 
     return {
         "case_id": case_id,
@@ -52,8 +85,12 @@ def evaluate_single(engine: ClaimEngine, case_data: dict, expected: ExpectedOutc
         "abstained": abstained,
         "evidence_per_dimension": retrieval_counts,
         "total_evidence_retrieved": total_evidence,
+        "retrieved_pages": retrieved_pages,
+        "gold_pages": gold_pages,
+        "retrieval_recall_at_k": retrieval_recall_at_k,
         "citation_count": citation_count,
         "citation_hit_rate": citation_hit_rate,
+        "citation_precision": citation_hit_rate,
         "validation_status": result.validation.status.value,
         "unsupported_claims": result.validation.unsupported_claims,
         "missing_evidence": result.missing_evidence,
@@ -66,6 +103,9 @@ def run_evaluation(data_dir: str = "./data") -> dict:
     engine = ClaimEngine()
     with open(EXPECTED_OUTCOMES_FILE, "r") as f:
         expected_map = {k: ExpectedOutcome(**v) for k, v in json.load(f).items()}
+
+    from app.evaluation.expected import load_gold_evidence
+    gold_map = load_gold_evidence()
 
     case_sets = [
         ("public", os.path.join(data_dir, "public_test_cases.json")),
@@ -88,7 +128,7 @@ def run_evaluation(data_dir: str = "./data") -> dict:
                 continue
             print(f"[RUN ] {case_id}")
             try:
-                res = evaluate_single(engine, case_data, expected)
+                res = evaluate_single(engine, case_data, expected, gold_map.get(case_id))
             except Exception as e:
                 print(f"[ERR ] {case_id}: {e}")
                 status_code = getattr(e, "status_code", None)
@@ -103,8 +143,12 @@ def run_evaluation(data_dir: str = "./data") -> dict:
                     "abstained": False,
                     "evidence_per_dimension": {},
                     "total_evidence_retrieved": 0,
+                    "retrieved_pages": [],
+                    "gold_pages": gold_map.get(case_id).gold_pages if gold_map.get(case_id) else [],
+                    "retrieval_recall_at_k": {},
                     "citation_count": 0,
                     "citation_hit_rate": 0.0,
+                    "citation_precision": 0.0,
                     "validation_status": "FAIL",
                     "unsupported_claims": [],
                     "missing_evidence": [],
@@ -135,6 +179,19 @@ def run_evaluation(data_dir: str = "./data") -> dict:
         if r["expected_decision"] == "NEEDS_REVIEW" and r["predicted_decision"] == "NEEDS_REVIEW"
     ]
 
+    # Aggregate retrieval + citation metrics
+    with_gold = [r for r in evaluated_results if r.get("gold_pages")]
+    recall_at_1 = recall_at_2 = recall_at_4 = recall_at_8 = 0.0
+    cite_precisions = []
+    if with_gold:
+        recall_at_1 = round(sum(r["retrieval_recall_at_k"].get(1, 0.0) for r in with_gold) / len(with_gold), 3)
+        recall_at_2 = round(sum(r["retrieval_recall_at_k"].get(2, 0.0) for r in with_gold) / len(with_gold), 3)
+        recall_at_4 = round(sum(r["retrieval_recall_at_k"].get(4, 0.0) for r in with_gold) / len(with_gold), 3)
+        recall_at_8 = round(sum(r["retrieval_recall_at_k"].get(8, 0.0) for r in with_gold) / len(with_gold), 3)
+        cite_precisions = [r["citation_precision"] for r in evaluated_results]
+
+    citation_precision_avg = round(sum(cite_precisions) / max(len(cite_precisions), 1), 3) if cite_precisions else 0.0
+
     summary = {
         "total_cases": total,
         "skipped_cases": [r["case_id"] for r in all_results if r.get("skipped", False)],
@@ -145,6 +202,11 @@ def run_evaluation(data_dir: str = "./data") -> dict:
         "expected_abstain_cases": expected_abstain,
         "abstained_correctly": abstained_correctly,
         "citation_coverage": round(cites / max(total, 1), 3),
+        "citation_precision": citation_precision_avg,
+        "retrieval_recall_at_1": recall_at_1,
+        "retrieval_recall_at_2": recall_at_2,
+        "retrieval_recall_at_4": recall_at_4,
+        "retrieval_recall_at_8": recall_at_8,
         "per_set": {k: {
             "total": len([r for r in v if not r.get("skipped", False)]),
             "skipped": sum(1 for r in v if r.get("skipped", False)),

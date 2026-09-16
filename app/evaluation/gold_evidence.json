@@ -1,0 +1,53 @@
+{
+  "PUB-001": {
+    "gold_pages": [8]
+  },
+  "PUB-002": {
+    "gold_pages": [9]
+  },
+  "PUB-003": {
+    "gold_pages": [8]
+  },
+  "PUB-004": {
+    "gold_pages": [7]
+  },
+  "PUB-005": {
+    "gold_pages": [9]
+  },
+  "PUB-006": {
+    "gold_pages": [3]
+  },
+  "PUB-007": {
+    "gold_pages": [8]
+  },
+  "PUB-008": {
+    "gold_pages": [9]
+  },
+  "PUB-009": {
+    "gold_pages": [8]
+  },
+  "PUB-010": {
+    "gold_pages": [12, 13]
+  },
+  "PUB-011": {
+    "gold_pages": [3]
+  },
+  "PUB-012": {
+    "gold_pages": [6, 10]
+  },
+  "CUS-001": {
+    "gold_pages": [8]
+  },
+  "CUS-002": {
+    "gold_pages": [8]
+  },
+  "CUS-003": {
+    "gold_pages": [3]
+  },
+  "CUS-004": {
+    "gold_pages": [10]
+  },
+  "CUS-005": {
+    "gold_pages": [7]
+  }
+}

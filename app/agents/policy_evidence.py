@@ -51,12 +51,20 @@ class PolicyEvidenceAgent:
         total_evidence = sum(len(v) for v in retrieved.values())
 
         state["retrieved_evidence"] = retrieved
+        all_pages: List[int] = []
+        for ev_list in retrieved.values():
+            for ev in ev_list:
+                all_pages.append(ev.page)
+
         state["trace"].append({
             "agent": "PolicyEvidence",
             "action": f"Retrieved evidence for {len(queries)} dimensions",
             "duration_ms": int((time.time() - start) * 1000),
             "evidence_count": total_evidence,
-            "metadata": {d.value: len(v) for d, v in retrieved.items()}
+            "metadata": {
+                "counts": {d.value: len(v) for d, v in retrieved.items()},
+                "retrieved_pages": all_pages,
+            }
         })
 
         return state

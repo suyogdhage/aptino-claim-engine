@@ -21,6 +21,11 @@ def main() -> int:
         failures.append("fewer than two expected abstentions were handled correctly")
     if summary.get("citation_coverage") != 1.0:
         failures.append("citation coverage is not 100%")
+    recall8 = summary.get("retrieval_recall_at_8")
+    if recall8 is None:
+        failures.append("retrieval_recall_at_8 not present in report")
+    elif recall8 < 0.8:
+        failures.append(f"retrieval_recall_at_8 is {recall8}, expected >= 0.8")
     if failures:
         print("Release gate failed: " + "; ".join(failures))
         return 1
