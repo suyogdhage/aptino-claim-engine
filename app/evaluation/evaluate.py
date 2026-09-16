@@ -2,7 +2,7 @@ import json
 import os
 import sys
 import time
-from typing import Dict, List, Any
+from typing import Dict, List, Any, Optional
 from pydantic import ValidationError
 
 from app.models.claim import ClaimCase, DecisionResponse
