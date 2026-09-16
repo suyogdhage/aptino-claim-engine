@@ -14,6 +14,13 @@ def format_inr(value: int) -> str:
 
 @st.cache_resource
 def load_engine():
+    from app.config import settings
+    from app.retrieval.hybrid_retriever import build_indices, index_status
+
+    ready, _ = index_status(settings.POLICY_PDF_PATH, settings.CHROMA_PERSIST_DIR)
+    if not ready:
+        build_indices(settings.POLICY_PDF_PATH, settings.CHROMA_PERSIST_DIR)
+
     from app.graph.workflow import ClaimEngine
     return ClaimEngine()
 
