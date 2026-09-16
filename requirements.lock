@@ -1,0 +1,2 @@
+# Reproducible Python 3.11 dependency set. Keep this in sync with requirements.txt.
+-r requirements.txt

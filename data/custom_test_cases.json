@@ -1,0 +1,177 @@
+[
+  {
+    "case_id": "CUS-001",
+    "policy_id": "USGIC-CSC-2017-2018",
+    "policy_start_date": "2025-01-01",
+    "claim_date": "2026-01-15",
+    "sum_insured_inr": 500000,
+    "continuous_coverage_months": 12,
+    "prior_insurer_continuous_years": 0,
+    "patient": {"age": 33},
+    "hospital": {"name": "City Hospital", "network_provider": true},
+    "treatment": {
+      "type": "inpatient",
+      "admission_hours": 96,
+      "diagnosis": "Kidney stone",
+      "procedure": "Lithotripsy",
+      "pre_existing": false,
+      "experimental": false
+    },
+    "expenses_inr": {
+      "room": 25000,
+      "doctor_fees": 20000,
+      "medicines_diagnostics": 45000,
+      "pre_hospitalization": 3000,
+      "post_hospitalization": 5000,
+      "ambulance": 800
+    },
+    "documents": [
+      "claim_form",
+      "discharge_summary",
+      "itemized_bill",
+      "doctor_prescription"
+    ],
+    "task": "Determine whether the claim is admissible."
+  },
+  {
+    "case_id": "CUS-002",
+    "policy_id": "USGIC-CSC-2017-2018",
+    "policy_start_date": "2025-01-01",
+    "claim_date": "2026-01-20",
+    "sum_insured_inr": 500000,
+    "continuous_coverage_months": 12,
+    "prior_insurer_continuous_years": 0,
+    "patient": {"age": 58},
+    "hospital": {"name": "National Heart Institute", "network_provider": true},
+    "treatment": {
+      "type": "inpatient",
+      "admission_hours": 120,
+      "diagnosis": "Coronary artery disease",
+      "procedure": "PTCA with stent",
+      "pre_existing": false,
+      "experimental": false
+    },
+    "expenses_inr": {
+      "room": 50000,
+      "doctor_fees": 150000,
+      "medicines_diagnostics": 250000,
+      "pre_hospitalization": 10000,
+      "post_hospitalization": 20000,
+      "ambulance": 2000
+    },
+    "documents": [
+      "claim_form",
+      "discharge_summary",
+      "itemized_bill",
+      "doctor_prescription",
+      "angiography_report"
+    ],
+    "task": "Determine whether the cardiac procedure is covered and which limits apply."
+  },
+  {
+    "case_id": "CUS-003",
+    "policy_id": "USGIC-CSC-2017-2018",
+    "policy_start_date": "2025-01-01",
+    "claim_date": "2026-02-10",
+    "sum_insured_inr": 500000,
+    "continuous_coverage_months": 13,
+    "prior_insurer_continuous_years": 0,
+    "patient": {"age": 45},
+    "hospital": {"name": "Metro Hospital", "network_provider": true},
+    "treatment": {
+      "type": "inpatient",
+      "admission_hours": 96,
+      "diagnosis": "Acute appendicitis",
+      "procedure": "Appendectomy",
+      "pre_existing": false,
+      "experimental": false
+    },
+    "expenses_inr": {
+      "room": 20000,
+      "doctor_fees": 25000,
+      "medicines_diagnostics": 40000,
+      "pre_hospitalization": 0,
+      "post_hospitalization": 0,
+      "ambulance": 0
+    },
+    "documents": [
+      "claim_form",
+      "discharge_summary"
+    ],
+    "task": "Assess the claim given the submitted documents.",
+    "evidence_context": {
+      "hospital_registered": null,
+      "medical_necessity_confirmed": null
+    }
+  },
+  {
+    "case_id": "CUS-004",
+    "policy_id": "USGIC-CSC-2017-2018",
+    "policy_start_date": "2025-01-01",
+    "claim_date": "2026-03-01",
+    "sum_insured_inr": 500000,
+    "continuous_coverage_months": 14,
+    "prior_insurer_continuous_years": 0,
+    "patient": {"age": 31},
+    "hospital": {"name": "City Hospital", "network_provider": true},
+    "treatment": {
+      "type": "day_care",
+      "admission_hours": 6,
+      "diagnosis": "Dental issue",
+      "procedure": "Dental surgery",
+      "pre_existing": false,
+      "experimental": false
+    },
+    "expenses_inr": {
+      "room": 0,
+      "doctor_fees": 15000,
+      "medicines_diagnostics": 20000,
+      "pre_hospitalization": 0,
+      "post_hospitalization": 0,
+      "ambulance": 0
+    },
+    "documents": [
+      "claim_form",
+      "procedure_record",
+      "itemized_bill",
+      "doctor_certificate"
+    ],
+    "task": "Determine whether the dental day-care treatment is covered."
+  },
+  {
+    "case_id": "CUS-005",
+    "policy_id": "USGIC-CSC-2017-2018",
+    "policy_start_date": "2025-01-01",
+    "claim_date": "2026-04-01",
+    "sum_insured_inr": 500000,
+    "continuous_coverage_months": 15,
+    "prior_insurer_continuous_years": 0,
+    "patient": {"age": 40},
+    "hospital": {"name": "HomeCare Services", "network_provider": false},
+    "treatment": {
+      "type": "domiciliary",
+      "admission_hours": 0,
+      "diagnosis": "Severe condition requiring home treatment",
+      "procedure": "Domiciliary treatment",
+      "pre_existing": false,
+      "hospital_room_unavailable": true,
+      "patient_cannot_be_moved": true,
+      "experimental": false
+    },
+    "expenses_inr": {
+      "room": 0,
+      "doctor_fees": 30000,
+      "medicines_diagnostics": 100000,
+      "pre_hospitalization": 0,
+      "post_hospitalization": 0,
+      "ambulance": 0
+    },
+    "documents": [
+      "claim_form",
+      "doctor_certificate",
+      "medical_records",
+      "itemized_bill"
+    ],
+    "task": "Determine whether domiciliary treatment satisfies all policy conditions."
+  }
+]

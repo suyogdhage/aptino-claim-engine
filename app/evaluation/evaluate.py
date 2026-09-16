@@ -1,0 +1,170 @@
+import json
+import os
+import sys
+import time
+from typing import Dict, List, Any
+from pydantic import ValidationError
+
+from app.models.claim import ClaimCase, DecisionResponse
+from app.graph.workflow import ClaimEngine
+from app.config import settings
+from app.evaluation.expected import EXPECTED_OUTCOMES_FILE, ExpectedOutcome
+
+
+def load_cases(path: str) -> List[dict]:
+    with open(path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def normalize_decision(d: str) -> str:
+    return d.upper().strip()
+
+
+def evaluate_single(engine: ClaimEngine, case_data: dict, expected: ExpectedOutcome) -> dict:
+    case_id = case_data.get("case_id", "UNKNOWN")
+    result: DecisionResponse = engine.analyze(ClaimCase(**case_data))
+
+    predicted = normalize_decision(result.decision.value)
+    expected_dec = normalize_decision(expected.decision)
+    correct = predicted == expected_dec
+
+    # Abstention: NEEDS_REVIEW matches expected NEEDS_REVIEW
+    abstained = predicted == "NEEDS_REVIEW"
+
+    # Retrieval metrics from trace
+    retrieval_counts = {}
+    for t in result.trace:
+        if t.agent == "PolicyEvidence":
+            retrieval_counts = t.metadata if isinstance(t.metadata, dict) else {}
+
+    total_evidence = sum(retrieval_counts.values()) if retrieval_counts else 0
+
+    citation_count = len(result.citations)
+    citation_hit_rate = 1.0 if citation_count > 0 else 0.0
+
+    return {
+        "case_id": case_id,
+        "predicted_decision": predicted,
+        "expected_decision": expected_dec,
+        "correct": correct,
+        "confidence": result.confidence,
+        "confidence_ok": result.confidence >= expected.confidence_min,
+        "abstained": abstained,
+        "evidence_per_dimension": retrieval_counts,
+        "total_evidence_retrieved": total_evidence,
+        "citation_count": citation_count,
+        "citation_hit_rate": citation_hit_rate,
+        "validation_status": result.validation.status.value,
+        "unsupported_claims": result.validation.unsupported_claims,
+        "missing_evidence": result.missing_evidence,
+        "trace": [t.model_dump() for t in result.trace],
+        "full_result": result.model_dump()
+    }
+
+
+def run_evaluation(data_dir: str = "./data") -> dict:
+    engine = ClaimEngine()
+    with open(EXPECTED_OUTCOMES_FILE, "r") as f:
+        expected_map = {k: ExpectedOutcome(**v) for k, v in json.load(f).items()}
+
+    case_sets = [
+        ("public", os.path.join(data_dir, "public_test_cases.json")),
+        ("custom", os.path.join(data_dir, "custom_test_cases.json")),
+    ]
+
+    all_results = []
+    per_set = {}
+
+    for set_name, case_path in case_sets:
+        if not os.path.exists(case_path):
+            continue
+        cases = load_cases(case_path)
+        set_results = []
+        for case_data in cases:
+            case_id = case_data.get("case_id")
+            expected = expected_map.get(case_id)
+            if not expected:
+                print(f"[SKIP] {case_id}: no expected outcome defined")
+                continue
+            print(f"[RUN ] {case_id}")
+            try:
+                res = evaluate_single(engine, case_data, expected)
+            except Exception as e:
+                print(f"[ERR ] {case_id}: {e}")
+                status_code = getattr(e, "status_code", None)
+                skipped = status_code == 429 or "rate_limit" in str(e).lower()
+                res = {
+                    "case_id": case_id,
+                    "predicted_decision": "ERROR",
+                    "expected_decision": expected.decision,
+                    "correct": False,
+                    "confidence": 0.0,
+                    "confidence_ok": False,
+                    "abstained": False,
+                    "evidence_per_dimension": {},
+                    "total_evidence_retrieved": 0,
+                    "citation_count": 0,
+                    "citation_hit_rate": 0.0,
+                    "validation_status": "FAIL",
+                    "unsupported_claims": [],
+                    "missing_evidence": [],
+                    "trace": [],
+                    "full_result": None,
+                    "error": str(e),
+                    "skipped": skipped,
+                }
+            set_results.append(res)
+            all_results.append(res)
+        per_set[set_name] = set_results
+
+    # Aggregate metrics
+    evaluated_results = [r for r in all_results if not r.get("skipped", False)]
+    total = len(evaluated_results)
+    correct = sum(1 for r in evaluated_results if r["correct"])
+    abstained = sum(1 for r in evaluated_results if r["abstained"])
+    cites = sum(1 for r in evaluated_results if r["citation_count"] > 0)
+    avg_conf = sum(r["confidence"] for r in evaluated_results) / max(total, 1)
+
+    # Identify abstention cases (cases where expected is NEEDS_REVIEW)
+    expected_abstain = [
+        r["case_id"] for r in all_results
+        if r["expected_decision"] == "NEEDS_REVIEW"
+    ]
+    abstained_correctly = [
+        r["case_id"] for r in all_results
+        if r["expected_decision"] == "NEEDS_REVIEW" and r["predicted_decision"] == "NEEDS_REVIEW"
+    ]
+
+    summary = {
+        "total_cases": total,
+        "skipped_cases": [r["case_id"] for r in all_results if r.get("skipped", False)],
+        "correct_decisions": correct,
+        "accuracy": round(correct / max(total, 1), 3),
+        "avg_confidence": round(avg_conf, 3),
+        "abstention_rate": round(abstained / max(total, 1), 3),
+        "expected_abstain_cases": expected_abstain,
+        "abstained_correctly": abstained_correctly,
+        "citation_coverage": round(cites / max(total, 1), 3),
+        "per_set": {k: {
+            "total": len([r for r in v if not r.get("skipped", False)]),
+            "skipped": sum(1 for r in v if r.get("skipped", False)),
+            "correct": sum(1 for r in v if r["correct"] and not r.get("skipped", False)),
+            "accuracy": round(sum(1 for r in v if r["correct"] and not r.get("skipped", False)) / max(len([r for r in v if not r.get("skipped", False)]), 1), 3)
+        } for k, v in per_set.items()}
+    }
+
+    report = {"summary": summary, "results": all_results}
+
+    os.makedirs("evaluation_results", exist_ok=True)
+    report_path = os.path.join("evaluation_results", "evaluation_report.json")
+    with open(report_path, "w", encoding="utf-8") as f:
+        json.dump(report, f, indent=2, default=str)
+
+    print(json.dumps(summary, indent=2))
+    print(f"Report written to {report_path}")
+    return summary
+
+
+if __name__ == "__main__":
+    data_dir = sys.argv[1] if len(sys.argv) > 1 else "./data"
+    run_evaluation(data_dir)

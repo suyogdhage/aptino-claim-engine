@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install --upgrade pip
+      - run: pip install -r requirements.txt
+      - run: python -m unittest discover -s tests -v
+      - run: python -m app.ingest data/policy.pdf chroma_db
+      - run: python -m app.evaluation.evaluate
+        env:
+          FORCE_MOCK_LLM: "true"
+      - run: python -m app.evaluation.check_release

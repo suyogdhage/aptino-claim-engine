@@ -1,0 +1,87 @@
+{
+  "PUB-001": {
+    "decision": "ADMISSIBLE_WITH_LIMITS",
+    "confidence_min": 0.6,
+    "note": "Acute appendicitis, waiting periods satisfied, but category sub-limits apply: room rent 1% SI/day, doctor fees 25% SI, ambulance 1% SI or Rs1000."
+  },
+  "PUB-002": {
+    "decision": "NOT_ADMISSIBLE",
+    "confidence_min": 0.6,
+    "note": "Claim 19 days after policy start, within 30-day initial waiting period."
+  },
+  "PUB-003": {
+    "decision": "NOT_ADMISSIBLE",
+    "confidence_min": 0.6,
+    "note": "Pre-existing thyroid: 27 months coverage < 48-month pre-existing disease waiting period, so not covered."
+  },
+  "PUB-004": {
+    "decision": "NOT_ADMISSIBLE",
+    "confidence_min": 0.5,
+    "note": "Domiciliary requires hospital room unavailable AND patient cannot be moved; only room-unavailable is true."
+  },
+  "PUB-005": {
+    "decision": "ADMISSIBLE",
+    "confidence_min": 0.6,
+    "note": "Day-care cataract surgery listed as covered day-care procedure; coverage exceeds waiting period."
+  },
+  "PUB-006": {
+    "decision": "NEEDS_REVIEW",
+    "confidence_min": 0.5,
+    "note": "Insufficient evidence: hospital registration and medical necessity unconfirmed, itemized bill missing."
+  },
+  "PUB-007": {
+    "decision": "ADMISSIBLE_WITH_LIMITS",
+    "confidence_min": 0.6,
+    "note": "Cancer treatment covered but subject to disease-specific sub-limit/cap."
+  },
+  "PUB-008": {
+    "decision": "NOT_ADMISSIBLE",
+    "confidence_min": 0.6,
+    "note": "Cosmetic surgery is an explicit exclusion."
+  },
+  "PUB-009": {
+    "decision": "ADMISSIBLE",
+    "confidence_min": 0.6,
+    "note": "Pre-hosp 30 days and post-hosp 60 days within policy windows, same condition confirmed."
+  },
+  "PUB-010": {
+    "decision": "ADMISSIBLE",
+    "confidence_min": 0.6,
+    "note": "Portability with 1 year prior continuous coverage; waiting periods reduced accordingly."
+  },
+  "PUB-011": {
+    "decision": "NEEDS_REVIEW",
+    "confidence_min": 0.5,
+    "note": "Facility not established as meeting hospital definition; cannot decide safely."
+  },
+  "PUB-012": {
+    "decision": "NOT_ADMISSIBLE",
+    "confidence_min": 0.6,
+    "note": "Experimental/unproven treatment is excluded."
+  },
+  "CUS-001": {
+    "decision": "ADMISSIBLE_WITH_LIMITS",
+    "confidence_min": 0.6,
+    "note": "Inpatient kidney stone treatment after waiting period, but room rent (₹25,000 over 4 days) exceeds room sub-limit (1% SI/day)."
+  },
+  "CUS-002": {
+    "decision": "ADMISSIBLE_WITH_LIMITS",
+    "confidence_min": 0.5,
+    "note": "Cardiac/PTCA may be subject to disease-specific sub-limits per policy."
+  },
+  "CUS-003": {
+    "decision": "NEEDS_REVIEW",
+    "confidence_min": 0.5,
+    "note": "Hospital registration and medical necessity unconfirmed; missing itemized bill."
+  },
+  "CUS-004": {
+    "decision": "NOT_ADMISSIBLE",
+    "confidence_min": 0.5,
+    "note": "Dental treatment typically excluded unless listed; verify against policy."
+  },
+  "CUS-005": {
+    "decision": "ADMISSIBLE_WITH_LIMITS",
+    "confidence_min": 0.5,
+    "note": "Domiciliary conditions met; applicable sub-limit applies to domiciliary treatment."
+  }
+}

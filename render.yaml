@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: aptino-claim-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GROQ_MODEL
+        value: openai/gpt-oss-120b
+      - key: CHROMA_PERSIST_DIR
+        value: /data
+      - key: POLICY_PDF_PATH
+        value: ./data/policy.pdf
+      - key: CORS_ORIGINS
+        value: https://aptino-claim-ui.onrender.com
+      - key: EMBEDDING_MODEL
+        value: BAAI/bge-small-en-v1.5
+      - key: RERANKER_MODEL
+        value: cross-encoder/ms-marco-MiniLM-L-6-v2
+    disk:
+      name: claim-index
+      mountPath: /data
+      sizeGB: 1
+
+  - type: web
+    name: aptino-claim-ui
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run app/frontend.py --server.address 0.0.0.0 --server.port $PORT --server.headless true
+    envVars:
+      - key: API_BASE_URL
+        value: https://aptino-claim-api.onrender.com
