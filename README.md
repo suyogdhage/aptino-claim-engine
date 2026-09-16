@@ -172,9 +172,10 @@ UI URLs here before submission.
 ## Known Limitations / Trade-offs
 
 - LLM adds latency (~10-30s per case); a smaller local model could cut cost at the price of reasoning quality.
-- Expected outcomes are derived from policy analysis of the 12 public cases; they encode the intended decision each case is designed to test.
+- Expected outcomes cover 18 cases (12 public + 6 custom) including one `PARTIALLY_ADMISSIBLE` scenario; they encode the intended decision each case is designed to test.
 - Reranker model download at first startup requires internet.
 - Abstention is preferred over guessing: cases with unconfirmed hospital registration or missing documents return `NEEDS_REVIEW`.
+- Real-Groq evaluation is blocked while the Groq free-tier token rate-limit quota is exhausted; the deterministic mock mode covers the full pipeline.
 
 The concise submission architecture note is [docs/ARCHITECTURE_NOTE.md](docs/ARCHITECTURE_NOTE.md).
 The policy-page rationale for every expected evaluation outcome is in
